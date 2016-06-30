@@ -46,7 +46,13 @@ class WebViewController: UIViewController {
     }
 
     func loadURL(_ url: URL) {
-        loadViewIfNeeded()
+        // ensure view is loaded (
+        if #available(iOS 9.0, *) {
+            loadViewIfNeeded()
+        } else {
+            _ = view
+        }
+
         _ = webView?.load(URLRequest(url: url))
         topLabel?.text = url.host
     }
