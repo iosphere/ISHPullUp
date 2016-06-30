@@ -29,7 +29,6 @@
     self.strokeWidth = 1.0 / [UIScreen mainScreen].scale;
     self.strokeColor = [UIColor lightGrayColor];
     self.cornerRadius = 8;
-    self.layer.needsDisplayOnBoundsChange = YES;
 }
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
@@ -77,6 +76,24 @@
     return [UIBezierPath bezierPathWithRoundedRect:adjustedBounds
                                  byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight
                                        cornerRadii:CGSizeMake(self.cornerRadius, self.cornerRadius)];
+}
+
+- (void)setFrame:(CGRect)frame {
+    BOOL sizeChanged = !CGSizeEqualToSize(self.frame.size, frame.size);
+    [super setFrame:frame];
+
+    if (sizeChanged) {
+        [self setNeedsDisplay];
+    }
+}
+
+- (void)setBounds:(CGRect)bounds {
+    BOOL sizeChanged = !CGSizeEqualToSize(self.bounds.size, bounds.size);
+    [super setBounds:bounds];
+
+    if (sizeChanged) {
+        [self setNeedsDisplay];
+    }
 }
 
 - (void)drawRect:(CGRect)rect {
