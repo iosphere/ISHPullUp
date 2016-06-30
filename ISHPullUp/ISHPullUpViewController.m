@@ -443,6 +443,15 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 
 #pragma mark Dimming
 
+// status bar should use light style if dimmed
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    if (self.dimmingView.alpha) {
+        return UIStatusBarStyleLightContent;
+    }
+
+    return UIStatusBarStyleDefault;
+}
+
 - (void)setDimmingColor:(UIColor *)dimmingColor {
     _dimmingColor = dimmingColor;
 
@@ -474,6 +483,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
                         options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState
                      animations:^{
                          [dimmingView setAlpha:hidden ? 0.0 : 1.0];
+                         [self setNeedsStatusBarAppearanceUpdate];
                      } completion:^(BOOL finished) {
                          if (hidden && finished) {
                              [dimmingView removeFromSuperview];
