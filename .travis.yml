@@ -1,0 +1,9 @@
+language: objective-c
+osx_image: xcode8
+install:
+  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+
+script:
+  - set -o pipefail
+# build sample app for simulator (also builds framework)
+  - xcodebuild -project ISHPullUpSample/ISHPullUpSample.xcodeproj -scheme ISHPullUpSample -destination 'platform=iOS Simulator,name=iPhone 6' clean build | xcpretty
