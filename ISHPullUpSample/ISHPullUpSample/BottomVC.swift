@@ -18,8 +18,8 @@ class BottomVC: UIViewController, ISHPullUpSizingDelegate, ISHPullUpStateDelegat
     @IBOutlet private weak var topView: UIView!
 
     private var firstAppearanceCompleted = false
-
-    @IBOutlet weak var pullUpController: ISHPullUpViewController!
+    weak var pullUpController: ISHPullUpViewController!
+    
     // we allow the pullUp to snap to the half way point
     private var halfWayPoint = CGFloat(0)
 
@@ -36,6 +36,15 @@ class BottomVC: UIViewController, ISHPullUpSizingDelegate, ISHPullUpStateDelegat
 
     @objc private func handleTapGesture(gesture: UITapGestureRecognizer) {
         pullUpController.toggleState(animated: true)
+    }
+
+    @IBAction private func buttonTappedLearnMore(_ sender: AnyObject) {
+        // for demo purposes we replace the bottomViewController with a web view controller
+        // there is no way back in the sample app though
+        // This also highlights the behaviour of the pullup view controller without a sizing and state delegate
+        let webVC = WebViewController()
+        webVC.loadURL(URL(string: "https://iosphere.de")!)
+        pullUpController.bottomViewController = webVC
     }
 
     // MARK: ISHPullUpSizingDelegate

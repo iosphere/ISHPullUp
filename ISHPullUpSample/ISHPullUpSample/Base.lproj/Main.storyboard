@@ -40,14 +40,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RUQ-Ev-jlM" userLabel="layoutMarginView">
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AS9-xW-rRR"/>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bottom margin 5 pt below red line " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZi-Jt-JnY">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" bottom margin 5 pt below red line " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZi-Jt-JnY">
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SVp-Fm-6py" userLabel="Ruler">
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="ddn-uk-DdS"/>
                                         </constraints>
@@ -78,6 +78,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="layoutAnnotationLabel" destination="FZi-Jt-JnY" id="Xar-gO-7OU"/>
                         <outlet property="mapView" destination="AS9-xW-rRR" id="kL0-lW-Ep6"/>
                         <outlet property="rootView" destination="RUQ-Ev-jlM" id="ka0-FQ-TXl"/>
                     </connections>
@@ -95,7 +96,7 @@
                         <viewControllerLayoutGuide type="bottom" id="doy-zs-vgi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uBy-SR-2QD" customClass="ISHPullUpRoundedView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2N-ib-x8k" userLabel="rootView">
@@ -133,22 +134,82 @@
                                     </view>
                                     <scrollView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Meo-oE-g32">
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTl-sM-aAD">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTl-sM-aAD">
                                                 <accessibility key="accessibilityConfiguration" identifier="scrollViewContent"/>
-                                                <string key="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment>
+                                                        <string key="content">A vertical split view controller with a pull up gesture as seen in the iOS 10 Maps app.
+</string>
+                                                        <attributes>
+                                                            <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
+                                                            <font key="NSOriginalFont" size="17" name="HelveticaNeue-Bold"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                        <attributes>
+                                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="ISHPullUp">
+                                                        <attributes>
+                                                            <font key="NSFont" size="17" name="Courier"/>
+                                                            <font key="NSOriginalFont" size="17" name="Courier"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment>
+                                                        <string key="content"> provides a simple UIViewControlller subclass with two child controllers. The layout can be managed entirely via delegation and is easy to use with autolayout.
+
+Two view subclasses are provided to make beautiful iOS10 style designs easier. </string>
+                                                        <attributes>
+                                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="ISHPullUpHandleView">
+                                                        <attributes>
+                                                            <font key="NSFont" size="17" name="Courier"/>
+                                                            <font key="NSOriginalFont" size="17" name="Courier"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content=" provides a drag handle as seen in the notification center or Maps app with three states: up, neutral, down. ">
+                                                        <attributes>
+                                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content="ISHPullUpRoundedView">
+                                                        <attributes>
+                                                            <font key="NSFont" size="17" name="Courier"/>
+                                                            <font key="NSOriginalFont" size="17" name="Courier"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                    <fragment content=" provides the perfect backing view for your bottom view controller with a hairline border and rounded top corners.">
+                                                        <attributes>
+                                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFt-g1-SmC">
+                                                <state key="normal" title="Learn more"/>
+                                                <connections>
+                                                    <action selector="buttonTappedLearnMore:" destination="DPR-aC-2Fs" eventType="touchUpInside" id="m5Z-ga-JVC"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="VTl-sM-aAD" firstAttribute="centerX" secondItem="Meo-oE-g32" secondAttribute="centerX" id="7R6-fn-Btf"/>
                                             <constraint firstItem="VTl-sM-aAD" firstAttribute="top" secondItem="Meo-oE-g32" secondAttribute="top" constant="10" id="DCG-YV-eJW"/>
                                             <constraint firstAttribute="trailing" secondItem="VTl-sM-aAD" secondAttribute="trailing" constant="10" id="Eyc-3u-c76"/>
+                                            <constraint firstItem="JFt-g1-SmC" firstAttribute="centerX" secondItem="VTl-sM-aAD" secondAttribute="centerX" id="LB8-d5-JPx"/>
+                                            <constraint firstAttribute="bottom" secondItem="JFt-g1-SmC" secondAttribute="bottom" constant="10" id="QRE-TW-PTu"/>
                                             <constraint firstItem="VTl-sM-aAD" firstAttribute="leading" secondItem="Meo-oE-g32" secondAttribute="leading" constant="10" id="S7F-I3-bpf"/>
+                                            <constraint firstItem="JFt-g1-SmC" firstAttribute="width" secondItem="VTl-sM-aAD" secondAttribute="width" id="TsJ-Yi-bv6"/>
                                             <constraint firstAttribute="height" priority="999" constant="400" id="gQv-WG-Quf"/>
-                                            <constraint firstAttribute="bottom" secondItem="VTl-sM-aAD" secondAttribute="bottom" constant="10" id="m8y-fU-7cx"/>
+                                            <constraint firstItem="JFt-g1-SmC" firstAttribute="top" secondItem="VTl-sM-aAD" secondAttribute="bottom" constant="10" id="p37-rz-I3N"/>
                                         </constraints>
                                     </scrollView>
                                 </subviews>
@@ -199,7 +260,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="480"/>
+                    <size key="freeformSize" width="375" height="500"/>
                     <connections>
                         <outlet property="handleView" destination="tsS-4c-9dW" id="4qU-Hb-42o"/>
                         <outlet property="rootView" destination="Y2N-ib-x8k" id="aKW-xD-v8N"/>
@@ -210,7 +271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V2v-3Y-vAL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1360.8" y="34.182908545727138"/>
+            <point key="canvasLocation" x="1332" y="-17.091454272863569"/>
         </scene>
     </scenes>
 </document>

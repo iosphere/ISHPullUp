@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC2B58311D2551DD008D810A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2B58301D2551DD008D810A /* WebViewController.swift */; };
 		DC3CA4B61D21CE260011C95E /* ContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3CA4B51D21CE260011C95E /* ContentVC.swift */; };
 		DC8EFBAD1D228A56008D0FE7 /* ISHPullUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCEC1A141D1EEB530080B69A /* ISHPullUp.framework */; };
 		DC8EFBB01D228A9C008D0FE7 /* ISHPullUp.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DCEC1A141D1EEB530080B69A /* ISHPullUp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -51,6 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DC2B58301D2551DD008D810A /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		DC3CA4B51D21CE260011C95E /* ContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentVC.swift; sourceTree = "<group>"; };
 		DCC019871D212AEC0035D5A8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DCEC19EC1D1EEB3F0080B69A /* ISHPullUpSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ISHPullUpSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +130,7 @@
 				DCEC1A1A1D1EEBF20080B69A /* ISHPullUpSample-Bridging-Header.h */,
 				DCEC1A1E1D1F31A30080B69A /* BottomVC.swift */,
 				DC3CA4B51D21CE260011C95E /* ContentVC.swift */,
+				DC2B58301D2551DD008D810A /* WebViewController.swift */,
 			);
 			path = ISHPullUpSample;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				DCEC19F21D1EEB3F0080B69A /* ViewController.swift in Sources */,
 				DCEC1A201D1F31A30080B69A /* BottomVC.swift in Sources */,
 				DC3CA4B61D21CE260011C95E /* ContentVC.swift in Sources */,
+				DC2B58311D2551DD008D810A /* WebViewController.swift in Sources */,
 				DCEC19F01D1EEB3F0080B69A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

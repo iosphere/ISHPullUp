@@ -21,7 +21,7 @@ class ViewController: ISHPullUpViewController {
         commonInit()
     }
 
-    func commonInit() {
+    private func commonInit() {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let contentVC = storyBoard.instantiateViewController(withIdentifier: "content") as! ContentVC
         let bottomVC = storyBoard.instantiateViewController(withIdentifier: "bottom") as! BottomVC
