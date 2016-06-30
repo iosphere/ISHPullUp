@@ -58,12 +58,17 @@ extern const CGFloat ISHPullUpViewControllerDefaultMinimumHeight;
 /**
  *   Tells the delegate when the user finishes dragging the bottomViewController and allows returning a different target height.
  *
+ *   @note Please be aware that the snapping behaviour (see snapToEnds and snapThreshold) is
+ *         applied on the value returned from the method. The final position of the bottom
+ *         view controller may thus differ from the returned value.
+ *         Set snapToEnds to NO to override this behaviour and ensure that the value returned is the final position.
+ *
  *   @param pullUpViewController The caller of this delegate method.
  *   @param bottomVC The bottom view controller for which the maximum height should be provided.
  *   @param height The current height at which the user stopped dragging.
  *   @return A nonnegative floating-point value that specifies the target height at which the bottomViewController should come to a rest.
  *           Return the provided height if you do not need to adjust the target height.
- *           Changes will be animated and snapped to either end if the option is enabled.
+ *           Changes will be animated and snapped to either end if snapToEnds is YES.
  */
 - (CGFloat)pullUpViewController:(ISHPullUpViewController *)pullUpViewController targetHeightForBottomViewController:(UIViewController *)bottomVC fromCurrentHeight:(CGFloat)height;
 
