@@ -11,6 +11,7 @@ import ISHPullUp
 
 class ContentVC: UIViewController, ISHPullUpContentDelegate {
     @IBOutlet private weak var mapView: MKMapView!
+    @IBOutlet private weak var layoutAnnotationLabel: UILabel!
 
     // we use a root view to rely on the edge inset
     // (this cannot be set on the VC's view directly)
@@ -18,11 +19,14 @@ class ContentVC: UIViewController, ISHPullUpContentDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        layoutAnnotationLabel.layer.cornerRadius = 2;
+        
         // the mapView should use the rootView's layout margins
         // to correctly update the legal label and coordinate region
         mapView.preservesSuperviewLayoutMargins = true
     }
+
+    // MARK: ISHPullUpContentDelegate
 
     func pullUpViewController(_ vc: ISHPullUpViewController, update edgeInsets: UIEdgeInsets, forContentViewController _: UIViewController) {
         // update edgeInsets
