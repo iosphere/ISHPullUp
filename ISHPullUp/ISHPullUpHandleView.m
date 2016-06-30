@@ -89,7 +89,7 @@
 }
 
 - (CAShapeLayer *)shapeLayer {
-    return self.layer;
+    return (CAShapeLayer *)self.layer;
 }
 
 - (void)layoutSubviews {

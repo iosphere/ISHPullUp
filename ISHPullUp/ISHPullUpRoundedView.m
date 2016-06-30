@@ -134,7 +134,6 @@
     UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRect:rect];
 
     if (self.roundedView) {
-        CGFloat cornerRadius = self.roundedView.cornerRadius;
         // convert roundeview bounds to this coordinate space
         CGRect roundedViewRect = [self convertRect:self.roundedView.bounds fromView:self.roundedView];
         // let rounded view create a path
