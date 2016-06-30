@@ -46,7 +46,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 
 - (void)setupPropertyDefaults {
     // set default layout mode without calling setter to avoid premature layout calls 
-    _bottomLayoutMode = ISHPullUpBottomLayoutModeResize;
+    _bottomLayoutMode = ISHPullUpBottomLayoutModeShift;
     self.bottomHeight = ISHPullUpViewControllerDefaultMinimumHeight;
     self.snapToEnds = YES;
     self.snapThreshold = ISHPullUpViewControllerDefaultSnapThreshold;
