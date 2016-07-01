@@ -449,7 +449,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
         return UIStatusBarStyleLightContent;
     }
 
-    return UIStatusBarStyleDefault;
+    return self.contentViewController.preferredStatusBarStyle;
 }
 
 - (void)setDimmingColor:(UIColor *)dimmingColor {
