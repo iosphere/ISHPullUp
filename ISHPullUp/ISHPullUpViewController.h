@@ -15,7 +15,7 @@ extern const CGFloat ISHPullUpViewControllerDefaultMinimumHeight;
 
 @class ISHPullUpViewController;
 
-@protocol ISHPullUpContentDelegate<NSObject>
+@protocol ISHPullUpContentDelegate
 
 /**
  *   Informs the delegate that the area overlayed by the bottomViewController's view changed.
@@ -101,7 +101,7 @@ typedef NS_ENUM (NSUInteger, ISHPullUpState) {
     ISHPullUpStateExpanded,
 };
 
-@protocol ISHPullUpStateDelegate<NSObject>
+@protocol ISHPullUpStateDelegate
 
 /**
  *   Tells the delegate when state of the view controller changes.
