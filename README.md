@@ -120,7 +120,29 @@ You can include them directly into your project:
 
 ### CocoaPods
 
-Coming soon...
+You can use CocoaPods to install ISHPullUp as a static library:
+
+```ruby
+target 'MyApp' do
+  pod 'ISHPullUp'
+end
+```
+
+See the [official website](https://cocoapods.org/#get_started) to get started with
+CocoaPods.
+
+ISHPullUp can also be installed as a framework through CocoaPods:
+
+```ruby
+target 'MyApp' do
+  use_frameworks!
+  pod 'ISHPullUp'
+end
+```
+
+It requires at least iOS 8 at runtime and can be imported as a module, see
+[Dynamically-Linked Framework](#dynamically-linked-framework).
+
 
 ## TODO
 
