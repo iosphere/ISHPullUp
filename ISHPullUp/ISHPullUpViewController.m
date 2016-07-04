@@ -351,6 +351,10 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 }
 
 - (void)updateViewLayoutBottomHeight:(CGFloat)bottomHeight withSize:(CGSize)size {
+    if (!self.isViewLoaded) {
+        // avoid loading the view controllers' views prematurely
+        return;
+    }
     CGFloat clampedBottomHeight = MAX(bottomHeight, self.minimumBottomHeightCached);
     CGRect bounds = CGRectMake(0, 0, size.width, size.height);
 
@@ -414,7 +418,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
         // - our view has not yet been loaded (will be called later again)
         // - vc.view has already a super view
         // - vc already a parent
-        NSAssert(!vc.view.superview, @"addViewOfSubViewController: should not be called for view controllers who's views have already been added to the view hierarchy.");
+        NSAssert(!(vc.isViewLoaded && vc.view.superview), @"addViewOfSubViewController: should not be called for view controllers who's views have already been added to the view hierarchy.");
         NSAssert(!vc.parentViewController, @"addViewOfSubViewController: should not be called for view controllers already have a parent view controller");
         return;
     }
@@ -462,8 +466,8 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 }
 
 - (void)setDimmingViewHidden:(BOOL)hidden height:(CGFloat)height {
-    if (!hidden && !self.dimmingColor) {
-        // dimming is disabled
+    if (!self.isViewLoaded || (!hidden && !self.dimmingColor)) {
+        // view is not loaded or dimming is disabled
         return;
     }
 
