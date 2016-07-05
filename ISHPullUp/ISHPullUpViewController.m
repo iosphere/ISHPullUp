@@ -211,6 +211,9 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
         // update rounded view on dimming view if needed
         if (self.dimmingView && [self.bottomViewController.view isKindOfClass:[ISHPullUpRoundedView class]]) {
             self.dimmingView.roundedView = (ISHPullUpRoundedView *)self.bottomViewController.view;
+        } else if (self.dimmingView && !self.bottomViewController) {
+            // remove dimming view if the bottomViewController was removed
+            [self setDimmingViewHidden:YES height:self.bottomHeight];
         }
         
         if (self.bottomHeight > self.maximumBottomHeightCached) {
