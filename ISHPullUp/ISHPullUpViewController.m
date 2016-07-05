@@ -469,7 +469,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 }
 
 - (void)setDimmingViewHidden:(BOOL)hidden height:(CGFloat)height {
-    if (!self.isViewLoaded || (!hidden && !self.dimmingColor)) {
+    if (!self.isViewLoaded || (!hidden && !self.dimmingColor)) {
         // view is not loaded or dimming is disabled
         return;
     }
