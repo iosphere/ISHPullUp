@@ -343,7 +343,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 
     [UIView animateWithDuration:0.4
                           delay:0
-         usingSpringWithDamping:0.6
+         usingSpringWithDamping:0.9
           initialSpringVelocity:0.3
                         options:UIViewAnimationOptionAllowUserInteraction
                      animations:updateBlock
