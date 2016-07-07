@@ -519,12 +519,12 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     }
 
     // add dimming view to view hierachy
-    [self.view addSubview:dimmingView];
-    [self setDimmingView:dimmingView];
-
     if (self.bottomViewController) {
-        [self.view bringSubviewToFront:self.bottomViewController.view];
+        [self.view insertSubview:dimmingView belowSubview:self.bottomViewController.view];
+    } else {
+        [self.view addSubview:dimmingView];
     }
+    [self setDimmingView:dimmingView];
 
     // setup initial frame without animation (may be called within an animation block)
     [UIView performWithoutAnimation:^{
