@@ -107,6 +107,46 @@
 
 @end
 
+@interface ISHPullUpRoundedVisualEffectView ()
+@property (nonatomic) UIVisualEffectView *visualEffectsView;
+@end
+
+@implementation ISHPullUpRoundedVisualEffectView
+
+- (void)setupDefaultValues {
+    self.visualEffectsView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]];
+    [self.visualEffectsView setClipsToBounds:YES];
+    [self insertSubview:self.visualEffectsView atIndex:0];
+    [super setupDefaultValues];
+}
+
+- (UIVisualEffect *)effect {
+    return self.visualEffectsView.effect;
+}
+
+- (void)setEffect:(UIVisualEffect *)effect {
+    [self.visualEffectsView setEffect:effect];
+}
+
+- (void)setStrokeWidth:(CGFloat)strokeWidth {
+    [super setStrokeWidth:strokeWidth];
+    [self setNeedsLayout];
+}
+
+- (void)setCornerRadius:(CGFloat)cornerRadius {
+    [super setCornerRadius:cornerRadius];
+    [self.visualEffectsView.layer setCornerRadius:cornerRadius];
+    [self setNeedsLayout];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    // extend visual effects view below own bounds to hide lower corner radius
+    self.visualEffectsView.frame = UIEdgeInsetsInsetRect(self.bounds, UIEdgeInsetsMake(self.strokeWidth, 0, -self.cornerRadius, 0));
+}
+
+@end
+
 @implementation ISHPullUpDimmingView
 
 - (instancetype)initWithFrame:(CGRect)frame {

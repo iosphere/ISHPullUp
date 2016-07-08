@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 IB_DESIGNABLE
+/// A UIView subclass with
+/// rounded corners at the top and a stroke.
 @interface ISHPullUpRoundedView : UIView
 /// The stroke color used for the edges. Defaults to lightGrayColor.
 @property (nonatomic, nullable) IBInspectable UIColor *strokeColor;
@@ -16,6 +18,11 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat strokeWidth;
 /// The corner radius is used for the top left and top right corners of the view. Default is 8pt.
 @property (nonatomic) IBInspectable CGFloat cornerRadius;
+@end
+
+/// A ISHPullUpRoundedView subclass which uses a UIVisualEffectView as a background.
+@interface ISHPullUpRoundedVisualEffectView : ISHPullUpRoundedView
+@property (nonatomic, nullable) UIVisualEffect *effect;
 @end
 
 /**
@@ -27,6 +34,8 @@ IB_DESIGNABLE
  as the bottomViewController's first child view.
 */
 @interface ISHPullUpDimmingView : UIView
+/// Optionally the bottom view controller's rounded view to allow dimming the edges around the round corners.
 @property (nonatomic, weak, nullable) ISHPullUpRoundedView *roundedView;
+/// The dimming color.
 @property (nonatomic, nonnull) UIColor *color;
 @end
