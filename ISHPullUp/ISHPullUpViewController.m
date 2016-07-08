@@ -57,8 +57,8 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self addViewOfSubViewController:self.contentViewController];
-    [self addViewOfSubViewController:self.bottomViewController];
+    [self addViewOfSubViewController:self.bottomViewController belowView:nil];
+    [self addViewOfSubViewController:self.contentViewController belowView:self.bottomViewController.view];
     [self setupGestureRecognizerForViewController:self.bottomViewController];
 }
 
@@ -183,13 +183,8 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     }
 
     _contentViewController = contentViewController;
-    [self addViewOfSubViewController:_contentViewController];
-    if (self.dimmingView) {
-        [self.view bringSubviewToFront:self.dimmingView];
-        if (self.bottomViewController) {
-            [self.view bringSubviewToFront:self.bottomViewController.view];
-        }
-    }
+    // insert contentViewController's view below dimming view or bottomViewController.view if any of those are loaded
+    [self addViewOfSubViewController:_contentViewController belowView:self.dimmingView ?: self.bottomViewController.view];
 }
 
 - (void)setBottomViewController:(UIViewController *)bottomViewController {
@@ -203,7 +198,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     }
 
     _bottomViewController = bottomViewController;
-    [self addViewOfSubViewController:_bottomViewController];
+    [self addViewOfSubViewController:_bottomViewController belowView:nil];
 
     if (self.isViewLoaded) {
         [self setupGestureRecognizerForViewController:bottomViewController];
@@ -415,7 +410,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 
 #pragma mark VC Hierachry
 
-- (void)addViewOfSubViewController:(UIViewController *)vc {
+- (void)addViewOfSubViewController:(UIViewController *)vc belowView:(nullable UIView *)belowView{
     if (!vc || !self.isViewLoaded || vc.view.superview || vc.parentViewController) {
         // do nothing if
         // - our view has not yet been loaded (will be called later again)
@@ -427,10 +422,10 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     }
 
     [self addChildViewController:vc];
-    [self.view addSubview:vc.view];
-
-    if (self.bottomViewController.view.superview) {
-        [self.view bringSubviewToFront:self.bottomViewController.view];
+    if ([belowView isDescendantOfView:self.view]) {
+        [self.view insertSubview:vc.view belowSubview:belowView];
+    } else {
+        [self.view addSubview:vc.view];
     }
 
     [self updateViewLayoutBottomHeight:self.bottomHeight withSize:self.view.bounds.size];
@@ -519,7 +514,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     }
 
     // add dimming view to view hierachy
-    if (self.bottomViewController) {
+    if ([self.bottomViewController.view isDescendantOfView:self.view]) {
         [self.view insertSubview:dimmingView belowSubview:self.bottomViewController.view];
     } else {
         [self.view addSubview:dimmingView];
