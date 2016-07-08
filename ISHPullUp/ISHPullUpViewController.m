@@ -324,8 +324,9 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     }
     CGFloat oldHeight = self.bottomHeight;
     self.bottomHeight = bottomHeight;
-
-    BOOL dimmingViewHidden = (self.bottomHeight < self.dimmingThreshold * self.maximumBottomHeightCached);
+    CGFloat heightOverMinimum = self.bottomHeight - self.minimumBottomHeightCached;
+    CGFloat maximumHeightOverMinimum = self.maximumBottomHeightCached - self.minimumBottomHeightCached;
+    BOOL dimmingViewHidden = (heightOverMinimum < (self.dimmingThreshold * maximumHeightOverMinimum));
     void (^updateBlock)();
     updateBlock = ^{
         // setup (hide) dimming view with oldheight
