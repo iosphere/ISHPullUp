@@ -206,7 +206,9 @@ typedef NS_ENUM(NSUInteger, ISHPullUpBottomLayoutMode) {
 /// Set to nil to disable dimming. Default is black with 40% alpha.
 @property (nonatomic, nullable) UIColor *dimmingColor;
 
-/// The threshold at which the content should be dimmed relative to the maximum height. Default is 0.5.
+/// The threshold at which the content should be dimmed relative to the
+/// difference between minimum and maximum height. Default is 0.5 meaning
+/// that dimming will start half way between min and max height.
 @property (nonatomic) CGFloat dimmingThreshold;
 
 /// Returns the current model value for the height of the bottomViewController.
