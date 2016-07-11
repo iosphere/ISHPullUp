@@ -31,12 +31,12 @@ const CGFloat ISHPullUpRoundedViewDefaultRadius = 8.0;
 
 - (instancetype)init {
     self = [super init];
-    self.shapeMaskLayer = [CAShapeLayer new];
+    [self setShapeMaskLayer:[CAShapeLayer new]];
     [self.shapeMaskLayer setFillColor:[[UIColor blackColor] CGColor]];
     [self.shapeMaskLayer setFillRule:kCAFillRuleEvenOdd];
-    self.shadowOffset = CGSizeZero;
+    [self setShadowOffset:CGSizeZero];
     [self setMask:self.shapeMaskLayer];
-    self.radius = ISHPullUpRoundedViewDefaultRadius;
+    [self setRadius:ISHPullUpRoundedViewDefaultRadius];
     return self;
 }
 
@@ -57,13 +57,13 @@ const CGFloat ISHPullUpRoundedViewDefaultRadius = 8.0;
     // The lip path is the basically our own bounds with top corners rounded using self.radius
     // this defines what shape is casting a shadow
     UIBezierPath *lipPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(self.radius, self.radius)];
-    self.shadowPath = [lipPath CGPath];
+    [self setShadowPath:[lipPath CGPath]];
 
     /*
      we want to mask the area that cast the shadow in order to not show a shadow there
      we do not want to mask the area above (and outside of bounds)
      we use the even-odd fill rule and add the entire bounds as rect plus the shadow length above
-     this yields the lip beeing covered twice (even) while everything above is covered once (odd)
+     this yields the lip being covered twice (even) while everything above is covered once (odd)
      we use that path as a filled mask leaving only the top visible
     */
     CGFloat defaultShadowPadding = 10;
@@ -91,13 +91,13 @@ const CGFloat ISHPullUpRoundedViewDefaultRadius = 8.0;
 }
 
 - (void)setupDefaultValues {
-    self.shadowLayer = [ISHPullUpRoundedTopShadowLayer new];
-    self.shadowColor = [UIColor blackColor];
-    self.shadowOpacity = 0.25;
+    [self setShadowLayer:[ISHPullUpRoundedTopShadowLayer new]];
+    [self setShadowColor:[UIColor blackColor]];
+    [self setShadowOpacity:0.25];
     [self.layer addSublayer:self.shadowLayer];
-    self.strokeWidth = 1.0 / [UIScreen mainScreen].scale;
-    self.strokeColor = [UIColor lightGrayColor];
-    self.cornerRadius = ISHPullUpRoundedViewDefaultRadius;
+    [self setStrokeWidth:(1.0 / [UIScreen mainScreen].scale)];
+    [self setStrokeColor:[UIColor lightGrayColor]];
+    [self setCornerRadius:ISHPullUpRoundedViewDefaultRadius];
 }
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor {
