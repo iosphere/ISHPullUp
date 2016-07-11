@@ -1,6 +1,6 @@
 # <img src="icon.png" align="center" width="60" height="60"> Changelog
 
-## 1.0.0
+## 1.0.0 and 1.0.1
 
 
 * Add ISHPullUpRoundedView subclass using a UIVisualEffectView.

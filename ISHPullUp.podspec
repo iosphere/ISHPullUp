@@ -8,7 +8,7 @@ ISHPullUp provides a simple UIViewControlller subclass with two child controller
 
 View subclasses are provided to make beautiful iOS10 style designs easier. ISHPullUpHandleView provides a drag handle as seen in the notification center or Maps app with three states: up, neutral, down. ISHPullUpRoundedView (and ISHPullUpRoundedVisualEffectView) provides the perfect backing view for your bottom view controller with a hairline border, rounded top corners, and a shadow.
 DESC
-  s.homepage         = 'https://github.com/iosphere/ISHPermissionKit'
+  s.homepage         = 'https://github.com/iosphere/ISHPullUp'
   s.screenshots      = 'https://github.com/iosphere/ISHPullUp/raw/master/screenshot.jpg'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Felix Lamouroux' => 'felix@iosphere.de' }
