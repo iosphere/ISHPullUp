@@ -287,6 +287,11 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     [self updateViewLayoutBottomHeight:self.bottomHeight withSize:self.view.bounds.size];
 }
 
+- (void)invalidateLayout {
+    [self updateCachedHeightsWithSize:self.view.bounds.size];
+    [self updateViewLayoutBottomHeight:self.bottomHeight withSize:self.view.bounds.size];
+}
+
 - (CGFloat)minimumBottomHeight {
     if (!self.bottomViewController) {
         return 0;

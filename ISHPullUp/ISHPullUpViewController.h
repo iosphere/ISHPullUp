@@ -217,6 +217,9 @@ typedef NS_ENUM(NSUInteger, ISHPullUpBottomLayoutMode) {
 /// Set the bottom height directly.
 /// @note: This will not perform any "sanity" checks or snapping.
 - (void)setBottomHeight:(CGFloat)bottomHeight animated:(BOOL)animated;
+
+/// Call this method when the minimum or maximum values change.
+- (void)invalidateLayout;
 @end
 
 NS_ASSUME_NONNULL_END
