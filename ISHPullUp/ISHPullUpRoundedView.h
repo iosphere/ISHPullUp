@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+/** 
+ * A view subclass providing corner radius for the top edges and shadow.
+ * The shadow is only applied outside of the view content allowing
+ * for transparency.
+ *
+ * When using this subclass as the primary view of a view controller
+ * the dimming (using ISHPullUpDimmingView) is automatically adjusted 
+ * for the top edges' rounded corners.
+ */
 IB_DESIGNABLE
 @interface ISHPullUpRoundedView : UIView
 /// The stroke color used for the edges. Defaults to lightGrayColor.
@@ -16,6 +25,16 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat strokeWidth;
 /// The corner radius is used for the top left and top right corners of the view. Default is 8pt.
 @property (nonatomic) IBInspectable CGFloat cornerRadius;
+
+/// The shadow opacity is used for the drop shadow above the rounded view. Default is 0.25.
+@property (nonatomic) IBInspectable CGFloat shadowOpacity;
+
+/// The shadow radius is used for the drop shadow above the rounded view. Default is 3.
+@property (nonatomic) IBInspectable CGFloat shadowRadius;
+
+/// The shadow color is used for the drop shadow above the rounded view. Default is black.
+@property (nonatomic, nullable) IBInspectable UIColor *shadowColor;
+
 @end
 
 /**
