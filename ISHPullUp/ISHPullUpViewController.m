@@ -250,13 +250,14 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     NSAssert(state != ISHPullUpStateIntermediate, @"Setting an intermediate state has no effect.");
     NSAssert(state != ISHPullUpStateDragging, @"Setting a dragging state has no effect.");
     CGFloat newHeight;
+    [self updateCachedHeightsWithSize:self.view.bounds.size];
     switch (state) {
         case ISHPullUpStateExpanded:
-            newHeight = [self maximumBottomHeightWithSize:self.view.bounds.size];
+            newHeight = self.maximumBottomHeightCached;
             break;
 
         case ISHPullUpStateCollapsed:
-            newHeight = [self minimumBottomHeight];
+            newHeight = self.minimumBottomHeightCached;
             break;
 
         case ISHPullUpStateIntermediate:
