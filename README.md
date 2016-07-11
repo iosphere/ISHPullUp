@@ -11,7 +11,7 @@ Maps app.**
 ISHPullUp provides a simple UIViewControlller subclass with two child controllers. 
 The layout can be managed entirely via delegation and is easy to use with autolayout.
 
-Two view subclasses are provided to make beautiful iOS10 style designs easier. 
+[View subclasses](#view-subclasses) are provided to make beautiful iOS10 style designs easier. 
 ISHPullUpHandleView provides a drag handle as seen in the notification center or Maps app 
 with three states: up, neutral, down. ISHPullUpRoundedView provides the perfect backing 
 view for your bottom view controller with a hairline border and rounded top corners.
@@ -85,7 +85,40 @@ The `ISHPullUpViewController` has four states: collapsed, dragging, intermediate
 
 You can react to state changes (e.g. to update the state of a `ISHPullUpHandleView`) by 
 setting the `stateDelegate` and implementing its only method.
- 
+
+### View subclasses
+
+#### `ISHPullUpRoundedView`
+
+A view subclass providing corner radius for the top edges and shadow.
+The shadow is only applied outside of the view content allowing
+for transparency.
+
+When using this subclass as the primary view for the bottom view controller
+the dimming (using `ISHPullUpDimmingView`) is automatically adjusted 
+for the top edges' rounded corners.
+
+You can configure most properties via *Interface Builder* or code including:
+
+* Shadow: opacity, offset, color, and radius
+* Stroke: color and line width
+* Corner radius
+
+The `ISHPullUpRoundedVisualEffectView` subclass uses a UIVisualEffectView as a background.
+
+#### `ISHPullUpHandleView` 
+
+The `ISHPullUpHandleView` can be used anywhere in your view hierarchy to show a drag handle. It provides three states (up, neutral, and down) and can animate between the states. Changing the state is up to the implementation allowing you to either match the state of the pullup view controller or to always display it in a neutral state.
+
+The frame should not be set explicitly. You should rather use the intrinsic content size and rely on auto layout. In *Interface Builder* wait for the framework to be compiled once for the `intrinsicContentSize` to be correctly applied to your `XIB`.
+  
+You can configure most aspects via  *Interface Builder* or code including:
+
+* Size of the arrow
+* Stroke: color and width
+* State (via code only)
+
+
 ## General info
 
 The framework is written in **Objective-C** to allow easy integration into any iOS project 
