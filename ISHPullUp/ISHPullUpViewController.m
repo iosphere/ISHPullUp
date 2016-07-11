@@ -344,7 +344,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
                           delay:0
          usingSpringWithDamping:0.9
           initialSpringVelocity:0.3
-                        options:UIViewAnimationOptionAllowUserInteraction
+                        options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionLayoutSubviews
                      animations:updateBlock
                      completion:nil];
 }
