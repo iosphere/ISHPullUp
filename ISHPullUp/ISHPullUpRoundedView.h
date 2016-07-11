@@ -37,6 +37,11 @@ IB_DESIGNABLE
 
 @end
 
+/// A ISHPullUpRoundedView subclass which uses a UIVisualEffectView as a background.
+@interface ISHPullUpRoundedVisualEffectView : ISHPullUpRoundedView
+@property (nonatomic, nullable) UIVisualEffect *effect;
+@end
+
 /**
  A view subclass used to dim the content view.
 
@@ -46,6 +51,8 @@ IB_DESIGNABLE
  as the bottomViewController's first child view.
 */
 @interface ISHPullUpDimmingView : UIView
+/// Optionally the bottom view controller's rounded view to allow dimming the edges around the round corners.
 @property (nonatomic, weak, nullable) ISHPullUpRoundedView *roundedView;
+/// The dimming color.
 @property (nonatomic, nonnull) UIColor *color;
 @end
