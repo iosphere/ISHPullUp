@@ -58,7 +58,7 @@ The sizing delegate also provides a callback to adjust the layout of the `bottom
 ### Adjusting the layout of the `contentViewController` using the `contentDelegate`
 
 The view of the `contentViewController` fills the entire view and is partly overlaid by
-the view of the `bottomViewController`. In addition the area covered by the bottom view can change. To adjust your layout accordingly you may set the `contentDelegate`. Additionally, we suggest that your content view controller uses a dedicated view as the first child to its own rot view that provides layout margins for the rest of the layout. The typical implementation of the content delegate would then look like this:  
+the view of the `bottomViewController`. In addition the area covered by the bottom view can change. To adjust your layout accordingly you may set the `contentDelegate`. Additionally, we suggest that your content view controller uses a dedicated view as the first child to its own root view that provides layout margins for the rest of the layout. The typical implementation of the content delegate would then look like this:  
 
 ```swift
 // Swift

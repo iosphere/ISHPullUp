@@ -15,6 +15,14 @@ extern const CGFloat ISHPullUpViewControllerDefaultMinimumHeight;
 
 @class ISHPullUpViewController;
 
+/**
+ *   The view of the contentViewController fills the entire view and is partly overlaid by the
+ *   view of the bottomViewController. In addition, the area covered by the bottom view can change.
+ *   To adjust your layout accordingly you may set the contentDelegate.
+ *
+ *   Additionally, we suggest that your content view controller uses a dedicated view as the first child to
+ *   its own root view that provides layout margins for the rest of the layout.
+ */
 @protocol ISHPullUpContentDelegate
 
 /**
@@ -33,6 +41,10 @@ extern const CGFloat ISHPullUpViewControllerDefaultMinimumHeight;
 - (void)pullUpViewController:(ISHPullUpViewController *)pullUpViewController updateEdgeInsets:(UIEdgeInsets)edgeInsets forContentViewController:(UIViewController *)contentVC;
 @end
 
+/**
+ *   The height of the bottomViewController is controlled by the sizingDelegate. All heights 
+ *   are cached and updated regularly.
+ */
 @protocol ISHPullUpSizingDelegate
 
 /**
@@ -89,6 +101,9 @@ extern const CGFloat ISHPullUpViewControllerDefaultMinimumHeight;
 - (void)pullUpViewController:(ISHPullUpViewController *)pullUpViewController updateEdgeInsets:(UIEdgeInsets)edgeInsets forBottomViewController:(UIViewController *)contentVC;
 @end
 
+/**
+ *   Defines all possible states of the bottom controller.
+ */
 typedef NS_ENUM (NSUInteger, ISHPullUpState) {
     /// The bottomViewController is shown at its minimum height.
     ISHPullUpStateCollapsed,
@@ -101,6 +116,9 @@ typedef NS_ENUM (NSUInteger, ISHPullUpState) {
     ISHPullUpStateExpanded,
 };
 
+/**
+ *   This protocol allows you to react to state changes.
+ */
 @protocol ISHPullUpStateDelegate
 
 /**
@@ -112,6 +130,8 @@ typedef NS_ENUM (NSUInteger, ISHPullUpState) {
 - (void)pullUpViewController:(ISHPullUpViewController *)pullUpViewController didChangeToState:(ISHPullUpState)state;
 @end
 
+/// Defines the behaviour of the bottom controller when not entirely
+/// on screen.
 typedef NS_ENUM(NSUInteger, ISHPullUpBottomLayoutMode) {
     /// The bottom view controller is only shifted and is never resized below its maximum height. Recommended mode.
     ISHPullUpBottomLayoutModeShift,
@@ -214,8 +234,14 @@ typedef NS_ENUM(NSUInteger, ISHPullUpBottomLayoutMode) {
 /// Returns the current model value for the height of the bottomViewController.
 @property (nonatomic, readonly) CGFloat bottomHeight;
 
-/// Set the bottom height directly.
-/// @note: This will not perform any "sanity" checks or snapping.
+/** 
+ *   Set the bottom height directly.
+ *
+ *   @param bottomHeight The new bottom height.
+ *   @param animated If YES the height change is animated.
+ *
+ *   @note: This will not perform any "sanity" checks or snapping.
+ */
 - (void)setBottomHeight:(CGFloat)bottomHeight animated:(BOOL)animated;
 
 /// Call this method when the minimum or maximum values change.
