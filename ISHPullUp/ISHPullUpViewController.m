@@ -500,7 +500,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
                      }];
 }
 
-/// Returns the currently loaded dimming view or loads a new one.
+// Returns the currently loaded dimming view or loads a new one.
 - (ISHPullUpDimmingView *)dimmingViewWithBottomHeight:(CGFloat)bottomHeight {
     ISHPullUpDimmingView *dimmingView = self.dimmingView;
 
