@@ -46,7 +46,8 @@ IB_DESIGNABLE
 - (void)setState:(ISHPullUpHandleState)state animated:(BOOL)animated;
 
 /// Helper method to convert ISHPullUpState to ISHPullUpHandleState.
-/// @param state The state of the entire pull up controller.
-/// @return The state of the handle view.
+/// @param state An ISHPullUpViewController's state.
+/// @return An ISHPullUpHandleView's state, appropriate for the given
+/// pull up controller state.
 + (ISHPullUpHandleState)handleStateForPullUpState:(ISHPullUpState)state;
 @end
