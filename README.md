@@ -1,12 +1,13 @@
 # <img src="icon.png" align="center" width="60" height="60"> ISHPullUp
 
 [![Travis Build Status](https://travis-ci.org/iosphere/ISHPullUp.svg?branch=master)](http://travis-ci.org/iosphere/ISHPullUp)&nbsp;
-[![Version](http://cocoapod-badges.herokuapp.com/v/ISHPullUp/badge.png)](http://cocoadocs.org/docsets/ISHPullUp)
+[![Version](http://cocoapod-badges.herokuapp.com/v/ISHPullUp/badge.png)](http://cocoadocs.org/docsets/ISHPullUp)&nbsp;
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 **A vertical split view controller with a pull up gesture as seen in the iOS 10 
 Maps app.**
 
-![Screenshot showing sample app in expanded and collapsed state](screenshot.jpg)
+![Screenshot showing sample app in expanded and collapsed state](SupportingFiles/screenshot.jpg)
 
 ISHPullUp provides a simple UIViewControlller subclass with two child controllers. 
 The layout can be managed entirely via delegation and is easy to use with autolayout.
@@ -18,7 +19,7 @@ view for your bottom view controller with a hairline border and rounded top corn
 
 ## Basic usage
 
-![Screencast explaining the basic implementation details](intro.gif)
+![Screencast explaining the basic implementation details](SupportingFiles/intro.gif)
 
 To use the framework create an instance of `ISHPullUpViewController` and set the 
 `contentViewController` and `bottomViewController` properties to your own view controller 
@@ -137,10 +138,13 @@ Add the project file `ISHPullUp.xcodeproj` as a subproject of your app.
 Then add the framework `ISHPullUp.framework` to the app's embedded binaries 
 (on the *General* tab of your app target's settings). On the *Build Phases* tab, 
 verify that the framework has also been added to the *Link Binary with
-Libraries* phase, and that a new *Embed Frameworks* phase has been created.
+Libraries* phase, and that an *Embed Frameworks* phase has been created (unless
+it existed before).
 
 The framework can be used as a module, so you can use `@import ISHPullUp;`
-to import all public headers.  Further reading on Modules: 
+(Objective-C) and `import ISHPullUp` (Swift) to import all public headers. 
+
+Further reading on Modules: 
 [Clang Documentation](http://clang.llvm.org/docs/Modules.html)
 
 ### Include files directly
@@ -148,13 +152,14 @@ to import all public headers.  Further reading on Modules:
 Currently the project relies on 3 implementation files and their headers. 
 You can include them directly into your project:
 
-* `ISHPullUp/ISHPullUpHandleView.h/m`
-* `ISHPullUp/ISHPullUpRoundedView.h/m`
-* `ISHPullUp/ISHPullUpViewController.h/m`
+* `ISHPullUp/ISHPullUpHandleView.h`{`h`/`m`}
+* `ISHPullUp/ISHPullUpRoundedView.`{`h`/`m`}
+* `ISHPullUp/ISHPullUpViewController.`{`h`/`m`}
 
 ### CocoaPods
 
-You can use CocoaPods to install ISHPullUp as a static library:
+You can use CocoaPods to install ISHPullUp as a static library. Add this
+to your Podfile:
 
 ```ruby
 target 'MyApp' do
@@ -162,10 +167,7 @@ target 'MyApp' do
 end
 ```
 
-See the [official website](https://cocoapods.org/#get_started) to get started with
-CocoaPods.
-
-ISHPullUp can also be installed as a framework through CocoaPods:
+`ISHPullUp` can also be installed as a framework:
 
 ```ruby
 target 'MyApp' do
@@ -174,9 +176,20 @@ target 'MyApp' do
 end
 ```
 
-It requires at least iOS 8 at runtime and can be imported as a module, see
-[Dynamically-Linked Framework](#dynamically-linked-framework).
+See the [official website](https://cocoapods.org/#get_started) to get started with
+CocoaPods.
 
+### Carthage
+
+Since `ISHPullUp` can be built as a framework, it supports Carthage, too. Add
+this to your Cartfile:
+
+```
+github iosphere/ISHPullUp
+```
+
+See the [Carthage repository](https://github.com/Carthage/Carthage) to get started
+with Carthage.
 
 ## TODO
 
