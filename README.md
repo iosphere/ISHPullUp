@@ -1,7 +1,8 @@
 # <img src="icon.png" align="center" width="60" height="60"> ISHPullUp
 
 [![Travis Build Status](https://travis-ci.org/iosphere/ISHPullUp.svg?branch=master)](http://travis-ci.org/iosphere/ISHPullUp)&nbsp;
-[![Version](http://cocoapod-badges.herokuapp.com/v/ISHPullUp/badge.png)](http://cocoadocs.org/docsets/ISHPullUp)
+[![Version](http://cocoapod-badges.herokuapp.com/v/ISHPullUp/badge.png)](http://cocoadocs.org/docsets/ISHPullUp)&nbsp;
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 **A vertical split view controller with a pull up gesture as seen in the iOS 10 
 Maps app.**
