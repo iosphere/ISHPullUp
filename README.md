@@ -7,7 +7,7 @@
 **A vertical split view controller with a pull up gesture as seen in the iOS 10 
 Maps app.**
 
-![Screenshot showing sample app in expanded and collapsed state](Supporting Files/screenshot.jpg)
+![Screenshot showing sample app in expanded and collapsed state](SupportingFiles/screenshot.jpg)
 
 ISHPullUp provides a simple UIViewControlller subclass with two child controllers. 
 The layout can be managed entirely via delegation and is easy to use with autolayout.
@@ -19,7 +19,7 @@ view for your bottom view controller with a hairline border and rounded top corn
 
 ## Basic usage
 
-![Screencast explaining the basic implementation details](Supporting Files/intro.gif)
+![Screencast explaining the basic implementation details](SupportingFiles/intro.gif)
 
 To use the framework create an instance of `ISHPullUpViewController` and set the 
 `contentViewController` and `bottomViewController` properties to your own view controller 

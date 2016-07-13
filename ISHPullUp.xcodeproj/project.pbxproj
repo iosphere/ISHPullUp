@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1BCB13901D3681CD00193B08 /* ISHPullUp.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BCB138E1D3681CD00193B08 /* ISHPullUp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1BDAF3011D368CB40061CAF9 /* ISHPullUp.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BDAF2FC1D368CB40061CAF9 /* ISHPullUp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC2C2CE61D2405BD00CB2528 /* ISHPullUpHandleView.h in Headers */ = {isa = PBXBuildFile; fileRef = DC2C2CE41D2405BD00CB2528 /* ISHPullUpHandleView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC2C2CE71D2405BD00CB2528 /* ISHPullUpHandleView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2C2CE51D2405BD00CB2528 /* ISHPullUpHandleView.m */; };
 		DC3E98711D2329A800468DF0 /* ISHPullUpRoundedView.h in Headers */ = {isa = PBXBuildFile; fileRef = DC3E986F1D2329A800468DF0 /* ISHPullUpRoundedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -17,8 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1BCB138D1D3681CD00193B08 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1BCB138E1D3681CD00193B08 /* ISHPullUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISHPullUp.h; sourceTree = "<group>"; };
+		1BDAF2FA1D368CB40061CAF9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BDAF2FC1D368CB40061CAF9 /* ISHPullUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISHPullUp.h; sourceTree = "<group>"; };
 		DC2C2CE41D2405BD00CB2528 /* ISHPullUpHandleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISHPullUpHandleView.h; sourceTree = "<group>"; };
 		DC2C2CE51D2405BD00CB2528 /* ISHPullUpHandleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISHPullUpHandleView.m; sourceTree = "<group>"; };
 		DC3E986F1D2329A800468DF0 /* ISHPullUpRoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISHPullUpRoundedView.h; sourceTree = "<group>"; };
@@ -39,13 +39,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1BCB138C1D3681CD00193B08 /* Supporting Files */ = {
+		1BDAF2F81D368CB40061CAF9 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				1BCB138D1D3681CD00193B08 /* Info.plist */,
-				1BCB138E1D3681CD00193B08 /* ISHPullUp.h */,
+				1BDAF2FA1D368CB40061CAF9 /* Info.plist */,
+				1BDAF2FC1D368CB40061CAF9 /* ISHPullUp.h */,
 			);
-			path = "Supporting Files";
+			path = SupportingFiles;
 			sourceTree = SOURCE_ROOT;
 		};
 		DCEC19CE1D1EEB0D0080B69A = {
@@ -67,7 +67,7 @@
 		DCEC19DA1D1EEB0D0080B69A /* ISHPullUp */ = {
 			isa = PBXGroup;
 			children = (
-				1BCB138C1D3681CD00193B08 /* Supporting Files */,
+				1BDAF2F81D368CB40061CAF9 /* SupportingFiles */,
 				DCEC1A161D1EEB750080B69A /* ISHPullUpViewController.h */,
 				DCEC1A171D1EEB750080B69A /* ISHPullUpViewController.m */,
 				DC2C2CE41D2405BD00CB2528 /* ISHPullUpHandleView.h */,
@@ -88,7 +88,7 @@
 				DCEC1A181D1EEB750080B69A /* ISHPullUpViewController.h in Headers */,
 				DC2C2CE61D2405BD00CB2528 /* ISHPullUpHandleView.h in Headers */,
 				DC3E98711D2329A800468DF0 /* ISHPullUpRoundedView.h in Headers */,
-				1BCB13901D3681CD00193B08 /* ISHPullUp.h in Headers */,
+				1BDAF3011D368CB40061CAF9 /* ISHPullUp.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +270,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SupportingFiles/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				ISH_BUNDLE_VERSION = "${CURRENT_PROJECT_VERSION}";
 				ISH_BUNDLE_VERSION_MAJOR = 1;
@@ -291,7 +291,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SupportingFiles/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				ISH_BUNDLE_VERSION = "${CURRENT_PROJECT_VERSION}";
 				ISH_BUNDLE_VERSION_MAJOR = 1;
