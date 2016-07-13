@@ -17,6 +17,9 @@ ISHPullUpHandleView provides a drag handle as seen in the notification center or
 with three states: up, neutral, down. ISHPullUpRoundedView provides the perfect backing 
 view for your bottom view controller with a hairline border and rounded top corners.
 
+Combine it with [`ISHHoverBar`](https://github.com/iosphere/ISHHoverBar) to create a UI resembling 
+the iOS 10 Maps app.
+
 ## Basic usage
 
 ![Screencast explaining the basic implementation details](SupportingFiles/intro.gif)
@@ -190,6 +193,12 @@ github iosphere/ISHPullUp
 
 See the [Carthage repository](https://github.com/Carthage/Carthage) to get started
 with Carthage.
+
+## More OpenSource projects by iosphere
+
+<img src="https://raw.githubusercontent.com/iosphere/ISHPermissionKit/master/icon.png" align="center" width="40" height="40"> [`ISHPermissionKit`](https://github.com/iosphere/ISHPermissionKit) - A polite and unified way of asking for permission on iOS
+
+<img src="https://raw.githubusercontent.com/iosphere/ISHHoverBar/master/icon.png" align="center" width="40" height="40"> [`ISHHoverBar`](https://github.com/iosphere/ISHHoverBar) - A floating UIToolBar replacement as seen in the iOS 10 Maps app, supporting both vertical and horizontal orientation
 
 ## TODO
 
