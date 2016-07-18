@@ -12,7 +12,7 @@ Maps app.**
 ISHPullUp provides a simple UIViewControlller subclass with two child controllers. 
 The layout can be managed entirely via delegation and is easy to use with autolayout.
 
-[View subclasses](#view-subclasses) are provided to make beautiful iOS10 style designs easier. 
+[View subclasses](#view-subclasses) are provided to make beautiful iOS 10 style designs easier. 
 ISHPullUpHandleView provides a drag handle as seen in the notification center or Maps app 
 with three states: up, neutral, down. ISHPullUpRoundedView provides the perfect backing 
 view for your bottom view controller with a hairline border and rounded top corners.
@@ -131,7 +131,7 @@ and has fully documented headers. All classes are annotated for easy integration
 
 The sample app is written in **Swift 3** and thus requires *Xcode 8* to compile.
 
-The framework and sample app have a **Deployment Target** of **iOS8**.
+The framework and sample app have a **Deployment Target** of **iOS 8**.
 
 ## Integration into your project
 
