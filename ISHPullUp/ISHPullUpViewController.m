@@ -411,7 +411,10 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
         self.bottomHeight = MAX(MIN(self.bottomHeight, self.maximumBottomHeightCached), self.minimumBottomHeightCached);
         [self updateViewLayoutBottomHeight:self.bottomHeight withSize:size];
     } completion:^(id<UIViewControllerTransitionCoordinatorContext> _Nonnull context) {
-        [self setState:stateBefore animated:context.isAnimated];
+        // snap back to previous state if in one of the end positions
+        if ((stateBefore == ISHPullUpStateCollapsed) || (stateBefore == ISHPullUpStateExpanded)) {
+            [self setState:stateBefore animated:context.isAnimated];
+        }
     }];
 }
 
