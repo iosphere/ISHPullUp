@@ -16,8 +16,8 @@ class WebViewController: UIViewController {
     override func loadView() {
         // we use an ISHPullUpRoundedView as the view for this view controller
         // ISHPullUpController will automatically adjust the dimming view to match
-        let roundedView = ISHPullUpRoundedView(frame: UIScreen.main().bounds)
-        roundedView.backgroundColor = .white()
+        let roundedView = ISHPullUpRoundedView(frame: UIScreen.main.bounds)
+        roundedView.backgroundColor = .white
         roundedView.cornerRadius = 20
         view = roundedView
     }
@@ -39,7 +39,7 @@ class WebViewController: UIViewController {
         label.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: labelHeight)
         label.autoresizingMask = [.flexibleBottomMargin, .flexibleWidth]
         label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleFootnote)
-        label.backgroundColor = .clear()
+        label.backgroundColor = .clear
         label.textAlignment = .center
         view.addSubview(label)
         topLabel = label
