@@ -22,6 +22,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 @property (nonatomic) CGFloat minimumBottomHeightCached;
 @property (nonatomic) CGFloat maximumBottomHeightCached;
 @property (nonatomic) BOOL firstAppearCompleted;
+@property (nonatomic) BOOL didAppearCompleted;
 @end
 
 @implementation ISHPullUpViewController
@@ -77,6 +78,22 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self setFirstAppearCompleted:YES];
+    [self setDidAppearCompleted:YES];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self setDidAppearCompleted:NO];
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    if (!self.didAppearCompleted) {
+        // in case there was a rotation event while hidden,
+        // this is the earliest opportunity to fix the layout
+
+        [self invalidateLayout];
+    }
 }
 
 #pragma mark Gestures
@@ -290,6 +307,8 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 
 - (void)invalidateLayout {
     [self updateCachedHeightsWithSize:self.view.bounds.size];
+    // clamp bottom height to new min/max
+    self.bottomHeight = MAX(self.minimumBottomHeightCached, MIN(self.bottomHeight, self.maximumBottomHeightCached));
     [self updateViewLayoutBottomHeight:self.bottomHeight withSize:self.view.bounds.size];
 }
 
