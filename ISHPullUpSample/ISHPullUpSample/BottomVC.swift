@@ -99,3 +99,10 @@ class BottomVC: UIViewController, ISHPullUpSizingDelegate, ISHPullUpStateDelegat
         }
     }
 }
+
+class ModalViewController: UIViewController {
+
+    @IBAction func buttonTappedDone(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+}
