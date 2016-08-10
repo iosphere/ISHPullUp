@@ -44,6 +44,10 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     return self;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)setupPropertyDefaults {
     // set default layout mode without calling setter to avoid premature layout calls 
     _bottomLayoutMode = ISHPullUpBottomLayoutModeShift;
@@ -60,6 +64,11 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     [self addViewOfSubViewController:self.bottomViewController belowView:nil];
     [self addViewOfSubViewController:self.contentViewController belowView:self.bottomViewController.view];
     [self setupGestureRecognizerForViewController:self.bottomViewController];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(UIApplicationDidChangeStatusBarFrameNotification:)
+                                                 name:UIApplicationDidChangeStatusBarFrameNotification
+                                               object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -415,6 +424,12 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
         if ((stateBefore == ISHPullUpStateCollapsed) || (stateBefore == ISHPullUpStateExpanded)) {
             [self setState:stateBefore animated:context.isAnimated];
         }
+    }];
+}
+
+- (void)UIApplicationDidChangeStatusBarFrameNotification:(NSNotification *)note {
+    [UIView animateWithDuration:0.25 animations:^{
+        [self invalidateLayout];
     }];
 }
 
