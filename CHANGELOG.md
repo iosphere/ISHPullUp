@@ -1,5 +1,10 @@
 # <img src="icon.png" align="center" width="60" height="60"> Changelog
 
+## 1.0.3
+
+* Fix layout issues after rotation while view controller was hidden
+* Fix layout issues related to in call status bar
+
 ## 1.0.2
 
 * Improved documentation.
