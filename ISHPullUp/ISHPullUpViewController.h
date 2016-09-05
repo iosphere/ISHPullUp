@@ -141,6 +141,22 @@ typedef NS_ENUM(NSUInteger, ISHPullUpBottomLayoutMode) {
 };
 
 /**
+ *   Defines a set of options to configure an animation.
+ */
+struct ISHPullUpAnimationConfiguration {
+    /// Duration of the animation.
+    CGFloat duration;
+    /// The spring damping of the animation.
+    CGFloat springDamping;
+    /// The initial spring velocity of the animation.
+    CGFloat initialVelocity;
+    /// Further options of the animation. Should always include
+    /// UIViewAnimationOptionLayoutSubviews.
+    UIViewAnimationOptions options;
+};
+typedef struct ISHPullUpAnimationConfiguration ISHPullUpAnimationConfiguration;
+
+/**
  *   A container view controller combining a fullscreen content
  *   and a dragable bottom view controller.
  *
@@ -194,6 +210,14 @@ typedef NS_ENUM(NSUInteger, ISHPullUpBottomLayoutMode) {
 
 /// The current state of the view controller.
 @property (nonatomic, readonly) ISHPullUpState state;
+
+/**
+ *   The animation configuration used for animated state changes. 
+ *   You can either set this property to adjust the animation, or
+ *   read this property to get the default configuration that you
+ *   can use in other animations.
+ */
+@property (nonatomic) ISHPullUpAnimationConfiguration animationConfiguration;
 
 /**
  *   Sets the current state of the view controller with(out) animation.
