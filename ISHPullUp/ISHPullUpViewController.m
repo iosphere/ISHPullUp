@@ -58,6 +58,13 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     self.topMargin = ISHPullUpViewControllerDefaultTopMargin;
     self.dimmingColor = [UIColor colorWithWhite:0 alpha:0.4];
     self.dimmingThreshold = 0.5;
+
+    ISHPullUpAnimationConfiguration config;
+    config.duration = 0.4;
+    config.springDamping = 0.9;
+    config.initialVelocity = 0.3;
+    config.options = UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionLayoutSubviews;
+    self.animationConfiguration = config;
 }
 
 - (void)viewDidLoad {
@@ -374,11 +381,12 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
         return;
     }
 
-    [UIView animateWithDuration:0.4
+    ISHPullUpAnimationConfiguration config = self.animationConfiguration;
+    [UIView animateWithDuration:config.duration
                           delay:0
-         usingSpringWithDamping:0.9
-          initialSpringVelocity:0.3
-                        options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionLayoutSubviews
+         usingSpringWithDamping:config.springDamping
+          initialSpringVelocity:config.initialVelocity
+                        options:config.options
                      animations:updateBlock
                      completion:nil];
 }
