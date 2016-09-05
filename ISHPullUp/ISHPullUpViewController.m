@@ -382,6 +382,8 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     }
 
     ISHPullUpAnimationConfiguration config = self.animationConfiguration;
+    NSAssert(config.options & UIViewAnimationOptionLayoutSubviews, @"Animation options must always contain UIViewAnimationOptionLayoutSubviews");
+
     [UIView animateWithDuration:config.duration
                           delay:0
          usingSpringWithDamping:config.springDamping

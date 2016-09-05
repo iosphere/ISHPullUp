@@ -150,7 +150,8 @@ struct ISHPullUpAnimationConfiguration {
     CGFloat springDamping;
     /// The initial spring velocity of the animation.
     CGFloat initialVelocity;
-    /// Further options of the animation.
+    /// Further options of the animation. Should always include
+    /// UIViewAnimationOptionLayoutSubviews.
     UIViewAnimationOptions options;
 };
 typedef struct ISHPullUpAnimationConfiguration ISHPullUpAnimationConfiguration;
