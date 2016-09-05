@@ -23,6 +23,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 @property (nonatomic) CGFloat maximumBottomHeightCached;
 @property (nonatomic) BOOL firstAppearCompleted;
 @property (nonatomic) BOOL didAppearCompleted;
+@property (nonatomic) BOOL isAnimatingStateChange;
 @end
 
 @implementation ISHPullUpViewController
@@ -81,6 +82,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
     if (!self.firstAppearCompleted) {
         [self updateCachedHeightsWithSize:self.view.bounds.size];
         self.bottomHeight = self.minimumBottomHeightCached;
@@ -258,7 +260,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     UIGestureRecognizerState gestureState = self.panGesture.state;
     BOOL gestureIsDragging = (gestureState == UIGestureRecognizerStateBegan) || (gestureState == UIGestureRecognizerStateChanged);
 
-    if (gestureIsDragging) {
+    if (gestureIsDragging || self.isAnimatingStateChange) {
         return ISHPullUpStateDragging;
     }
 
@@ -363,17 +365,26 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     if (bottomHeight == self.bottomHeight) {
         return;
     }
+
     CGFloat oldHeight = self.bottomHeight;
     self.bottomHeight = bottomHeight;
     CGFloat heightOverMinimum = self.bottomHeight - self.minimumBottomHeightCached;
     CGFloat maximumHeightOverMinimum = self.maximumBottomHeightCached - self.minimumBottomHeightCached;
     BOOL dimmingViewHidden = (heightOverMinimum < (self.dimmingThreshold * maximumHeightOverMinimum));
+
     void (^updateBlock)();
     updateBlock = ^{
+        self.isAnimatingStateChange = animated;
+
         // setup (hide) dimming view with oldheight
         // this allows the animation to start from the old height and animate along
         [self setDimmingViewHidden:dimmingViewHidden height:oldHeight];
         [self updateViewLayoutBottomHeight:bottomHeight withSize:self.view.bounds.size];
+
+        if (animated) {
+            // when animating, we need an intermediate state
+            [self.stateDelegate pullUpViewController:self didChangeToState:[self state]];
+        }
     };
 
     if (!animated) {
@@ -390,7 +401,10 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
           initialSpringVelocity:config.initialVelocity
                         options:config.options
                      animations:updateBlock
-                     completion:nil];
+                     completion:^(BOOL finished) {
+                         self.isAnimatingStateChange = NO;
+                         [self.stateDelegate pullUpViewController:self didChangeToState:[self state]];
+                     }];
 }
 
 - (void)updateViewLayoutBottomHeight:(CGFloat)bottomHeight withSize:(CGSize)size {

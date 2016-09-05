@@ -107,7 +107,8 @@ extern const CGFloat ISHPullUpViewControllerDefaultMinimumHeight;
 typedef NS_ENUM (NSUInteger, ISHPullUpState) {
     /// The bottomViewController is shown at its minimum height.
     ISHPullUpStateCollapsed,
-    /// The bottomViewController is currently being dragged.
+    /// The bottomViewController is currently being dragged, or
+    /// within a state change animation.
     ISHPullUpStateDragging,
     /// The bottomViewController is currently resting somewhere
     /// between the collapsed and expanded positions.
@@ -122,12 +123,15 @@ typedef NS_ENUM (NSUInteger, ISHPullUpState) {
 @protocol ISHPullUpStateDelegate
 
 /**
- *   Tells the delegate when state of the view controller changes.
+ *   Tells the delegate that the state of the view controller has changed.
+ *
+ *   This method is also called initially right before the first appearance.
  *
  *   @param pullUpViewController The caller of this delegate method.
  *   @param state The new state of the view controller.
  */
 - (void)pullUpViewController:(ISHPullUpViewController *)pullUpViewController didChangeToState:(ISHPullUpState)state;
+
 @end
 
 /// Defines the behaviour of the bottom controller when not entirely
