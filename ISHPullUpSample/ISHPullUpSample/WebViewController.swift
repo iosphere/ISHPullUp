@@ -38,7 +38,7 @@ class WebViewController: UIViewController {
         let label = UILabel()
         label.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: labelHeight)
         label.autoresizingMask = [.flexibleBottomMargin, .flexibleWidth]
-        label.font = UIFont.preferredFont(forTextStyle: UIFontTextStyleFootnote)
+        label.font = UIFont.preferredFont(forTextStyle: .footnote)
         label.backgroundColor = .clear
         label.textAlignment = .center
         view.addSubview(label)
