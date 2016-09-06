@@ -206,7 +206,7 @@ typedef struct ISHPullUpAnimationConfiguration ISHPullUpAnimationConfiguration;
 
 /***
  *  The threshold as a relative value ]0-1[ of the total height.
- *  If the user stops dragging within this threshold of 
+ *  If the user stops dragging within this threshold of
  *  either end. The bottom view controller will snap
  *  to the closest end. Default is 0.25.
  */
@@ -222,6 +222,18 @@ typedef struct ISHPullUpAnimationConfiguration ISHPullUpAnimationConfiguration;
  *   can use in other animations.
  */
 @property (nonatomic) ISHPullUpAnimationConfiguration animationConfiguration;
+
+/**
+ *   When the controller is locked, its state cannot be changed by
+ *   dragging or tapping. The controller can be locked in collapsed,
+ *   intermediate, or expanded state.
+ *   
+ *   The state can still be changed programmatically or by external
+ *   gestures.
+ *
+ *   Defaults to NO.
+ */
+@property (nonatomic, getter=isLocked) BOOL locked;
 
 /**
  *   Sets the current state of the view controller with(out) animation.

@@ -14,7 +14,7 @@ const CGFloat ISHPullUpViewControllerDefaultSnapThreshold = 0.25;
 const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 
 @interface ISHPullUpViewController ()<UIGestureRecognizerDelegate>
-@property (nonatomic) UIPanGestureRecognizer *panGesture;
+@property (nonatomic, weak) UIPanGestureRecognizer *panGesture;
 @property (nonatomic) CGFloat bottomHeight;
 @property (nonatomic) CGFloat bottomHeightAtStartOfGesture;
 @property (nonatomic) ISHPullUpState stateAtStartOfGesture;
@@ -72,7 +72,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     [super viewDidLoad];
     [self addViewOfSubViewController:self.bottomViewController belowView:nil];
     [self addViewOfSubViewController:self.contentViewController belowView:self.bottomViewController.view];
-    [self setupGestureRecognizerForViewController:self.bottomViewController];
+    [self setupPanGestureRecognizerForViewController:self.bottomViewController];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(UIApplicationDidChangeStatusBarFrameNotification:)
@@ -114,19 +114,25 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     }
 }
 
-#pragma mark Gestures
+- (void)setLocked:(BOOL)locked {
+    _locked = locked;
+    self.panGesture.enabled = !locked;
+}
 
-- (void)setupGestureRecognizerForViewController:(UIViewController *)vc {
+#pragma mark Pan Gesture
+
+- (void)setupPanGestureRecognizerForViewController:(UIViewController *)vc {
     // remove previous gesture recognizer if needed
     [self.panGesture.view removeGestureRecognizer:self.panGesture];
 
     // setup new gesture recognizer on vc's view
-    self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-    self.panGesture.delegate = self;
-    [vc.view addGestureRecognizer:self.panGesture];
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+    self.panGesture = panGesture;
+    panGesture.delegate = self;
+    [vc.view addGestureRecognizer:panGesture];
 }
 
-- (void)handleGesture:(UIPanGestureRecognizer *)gesture {
+- (void)handlePanGesture:(UIPanGestureRecognizer *)gesture {
     BOOL animated = NO;
     CGFloat newHeight;
 
@@ -201,6 +207,8 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    NSAssert(gestureRecognizer == self.panGesture, @"Unexpected gesture recognizer: %@", gestureRecognizer);
+
     // Do not interfere with scrollviews
     return NO;
 }
@@ -236,7 +244,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     [self addViewOfSubViewController:_bottomViewController belowView:nil];
 
     if (self.isViewLoaded) {
-        [self setupGestureRecognizerForViewController:bottomViewController];
+        [self setupPanGestureRecognizerForViewController:bottomViewController];
         [self updateCachedHeightsWithSize:self.view.bounds.size];
         // update rounded view on dimming view if needed
         if (self.dimmingView && [self.bottomViewController.view isKindOfClass:[ISHPullUpRoundedView class]]) {
@@ -314,6 +322,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 }
 
 #pragma mark Layout
+
 - (void)setBottomLayoutMode:(ISHPullUpBottomLayoutMode)bottomLayoutMode {
     if (bottomLayoutMode == _bottomLayoutMode) {
         return;
@@ -602,6 +611,10 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 }
 
 - (void)handleDimmingViewTapGesture:(UITapGestureRecognizer *)tap {
+    if (self.isLocked) {
+        return;
+    }
+
     [self setState:ISHPullUpStateCollapsed animated:YES];
 }
 
