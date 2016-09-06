@@ -15,6 +15,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 
 @interface ISHPullUpViewController ()<UIGestureRecognizerDelegate>
 @property (nonatomic, weak) UIPanGestureRecognizer *panGesture;
+@property (nonatomic, weak) UITapGestureRecognizer *dimmingViewTapGesture;
 @property (nonatomic) CGFloat bottomHeight;
 @property (nonatomic) CGFloat bottomHeightAtStartOfGesture;
 @property (nonatomic) ISHPullUpState stateAtStartOfGesture;
@@ -117,6 +118,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 - (void)setLocked:(BOOL)locked {
     _locked = locked;
     self.panGesture.enabled = !locked;
+    self.dimmingViewTapGesture.enabled = !locked;
 }
 
 #pragma mark Pan Gesture
@@ -129,6 +131,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
     self.panGesture = panGesture;
     panGesture.delegate = self;
+    panGesture.enabled = !self.locked;
     [vc.view addGestureRecognizer:panGesture];
 }
 
@@ -583,6 +586,8 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     [dimmingView setColor:self.dimmingColor];
     [dimmingView setAlpha:0];
     UITapGestureRecognizer *collapseTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDimmingViewTapGesture:)];
+    self.dimmingViewTapGesture = collapseTap;
+    collapseTap.enabled = !self.locked;
     [dimmingView addGestureRecognizer:collapseTap];
 
     // handle rounded view if root view of bottom view controller is rounded
@@ -611,10 +616,6 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 }
 
 - (void)handleDimmingViewTapGesture:(UITapGestureRecognizer *)tap {
-    if (self.isLocked) {
-        return;
-    }
-
     [self setState:ISHPullUpStateCollapsed animated:YES];
 }
 
