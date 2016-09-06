@@ -16,6 +16,7 @@ class BottomVC: UIViewController, ISHPullUpSizingDelegate, ISHPullUpStateDelegat
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var topLabel: UILabel!
     @IBOutlet private weak var topView: UIView!
+    @IBOutlet private weak var buttonLock: UIButton?
 
     private var firstAppearanceCompleted = false
     weak var pullUpController: ISHPullUpViewController!
@@ -34,7 +35,11 @@ class BottomVC: UIViewController, ISHPullUpSizingDelegate, ISHPullUpStateDelegat
         firstAppearanceCompleted = true;
     }
 
-    @objc private func handleTapGesture(gesture: UITapGestureRecognizer) {
+    private dynamic func handleTapGesture(gesture: UITapGestureRecognizer) {
+        if pullUpController.isLocked {
+            return
+        }
+
         pullUpController.toggleState(animated: true)
     }
 
@@ -45,6 +50,11 @@ class BottomVC: UIViewController, ISHPullUpSizingDelegate, ISHPullUpStateDelegat
         let webVC = WebViewController()
         webVC.loadURL(URL(string: "https://iosphere.de")!)
         pullUpController.bottomViewController = webVC
+    }
+
+    @IBAction private func buttonTappedLock(_ sender: AnyObject) {
+        pullUpController.isLocked  = !pullUpController.isLocked
+        buttonLock?.setTitle(pullUpController.isLocked ? "Unlock" : "Lock", for: .normal)
     }
 
     // MARK: ISHPullUpSizingDelegate
