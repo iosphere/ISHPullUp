@@ -1,5 +1,11 @@
 # <img src="icon.png" align="center" width="60" height="60"> Changelog
 
+## 1.0.4
+
+* Allow PullUp to be locked
+* Use `ISHPullUpStateDragging` when an animation is currently running
+* Minor Xcode project modernizations
+
 ## 1.0.3
 
 * Fix layout issues after rotation while view controller was hidden
