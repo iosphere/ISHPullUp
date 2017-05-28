@@ -1,5 +1,10 @@
 # <img src="icon.png" align="center" width="60" height="60"> Changelog
 
+## 1.0.5
+
+* Adjust the position of bottom view to prevent being partially hidden 
+when contained inside UITabBarController
+
 ## 1.0.4
 
 * Allow PullUp to be locked
