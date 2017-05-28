@@ -373,6 +373,13 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     self.maximumBottomHeightCached = [self maximumBottomHeightWithSize:size];
 }
 
+- (CGFloat)adjustBottomViewVerticalPostionForViewContainment:(CGFloat)yPosition {
+    if (self.tabBarController != nil && self.tabBarController.tabBar.frame.size.height != 0) {
+        yPosition -= self.tabBarController.tabBar.frame.size.height;
+    }
+    return yPosition;
+}
+
 - (void)setBottomHeight:(CGFloat)bottomHeight animated:(BOOL)animated {
     if (bottomHeight == self.bottomHeight) {
         return;
@@ -441,13 +448,17 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
              */
             CGFloat maxHeight = self.maximumBottomHeightCached;
             CGFloat expandedBottomHeight = MAX(maxHeight, clampedBottomHeight);
-            bottomFrame = CGRectMake(0, CGRectGetMaxY(bounds) - clampedBottomHeight, CGRectGetWidth(bounds), expandedBottomHeight);
+            CGFloat yPosition = CGRectGetMaxY(bounds) - clampedBottomHeight;
+            yPosition = [self adjustBottomViewVerticalPostionForViewContainment:yPosition];
+            bottomFrame = CGRectMake(0, yPosition, CGRectGetWidth(bounds), expandedBottomHeight);
             break;
         }
 
         case ISHPullUpBottomLayoutModeResize: {
             clampedBottomHeight = bottomHeight;
-            bottomFrame = CGRectMake(0, CGRectGetMaxY(bounds) - clampedBottomHeight, CGRectGetWidth(bounds), clampedBottomHeight);
+            CGFloat yPosition = CGRectGetMaxY(bounds) - clampedBottomHeight;
+            yPosition = [self adjustBottomViewVerticalPostionForViewContainment:yPosition];
+            bottomFrame = CGRectMake(0, yPosition, CGRectGetWidth(bounds), clampedBottomHeight);
             break;
         }
     }
