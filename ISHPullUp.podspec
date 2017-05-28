@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ISHPullUp'
-  s.version          = '1.0.4'
+  s.version          = '1.0.5'
   s.summary          = 'Vertical split view controller with pull up gesture as seen in the iOS 10 Maps and Music app'
   s.description      = <<-DESC
 ISHPullUp provides a simple UIViewControlller subclass with two child controllers. The layout can be managed entirely via delegation and is easy to use with autolayout. A pan gesture allows the user to drag the bottom view controller up or down. 
