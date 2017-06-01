@@ -64,11 +64,6 @@
 
     _state = state;
 
-    if (!animated) {
-        [self setNeedsLayout];
-        return;
-    }
-
     UIBezierPath *newPath = [self pathForBounds:self.bounds state:state];
 
     NSString *keyPath = @"path";
@@ -76,7 +71,7 @@
     animation.fromValue = (id)self.shapeLayer.path;
     self.shapeLayer.path = [newPath CGPath];
     animation.toValue = (id)self.shapeLayer.path;
-    animation.duration = 0.35;
+    animation.duration = animated ? 0.35 : 0.0;
     [self.shapeLayer addAnimation:animation forKey:keyPath];
 }
 
