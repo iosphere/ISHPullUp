@@ -1,5 +1,9 @@
 # <img src="icon.png" align="center" width="60" height="60"> Changelog
 
+## 1.0.5
+
+* Support view controller containment: `ISHPullUpViewController` (or subclasses thereof) can now be embedded in container view controllers that make use of the bottom layout guide (e.g., `UITabBarController`)
+
 ## 1.0.4
 
 * Allow PullUp to be locked
