@@ -441,16 +441,21 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
              */
             CGFloat maxHeight = self.maximumBottomHeightCached;
             CGFloat expandedBottomHeight = MAX(maxHeight, clampedBottomHeight);
-            bottomFrame = CGRectMake(0, CGRectGetMaxY(bounds) - clampedBottomHeight, CGRectGetWidth(bounds), expandedBottomHeight);
+            CGFloat yPosition = CGRectGetMaxY(bounds) - clampedBottomHeight - self.bottomLayoutGuide.length;
+
+            bottomFrame = CGRectMake(0, yPosition, CGRectGetWidth(bounds), expandedBottomHeight);
             break;
         }
 
         case ISHPullUpBottomLayoutModeResize: {
             clampedBottomHeight = bottomHeight;
-            bottomFrame = CGRectMake(0, CGRectGetMaxY(bounds) - clampedBottomHeight, CGRectGetWidth(bounds), clampedBottomHeight);
+            CGFloat yPosition = CGRectGetMaxY(bounds) - clampedBottomHeight - self.bottomLayoutGuide.length;
+
+            bottomFrame = CGRectMake(0, yPosition, CGRectGetWidth(bounds), clampedBottomHeight);
             break;
         }
     }
+
     [self.bottomViewController.view setFrame:bottomFrame];
 
     // inform content delegate that edge insets were updated
