@@ -25,6 +25,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 @property (nonatomic) BOOL firstAppearCompleted;
 @property (nonatomic) BOOL didAppearCompleted;
 @property (nonatomic) BOOL isAnimatingStateChange;
+@property (nonatomic, readwrite) BOOL bottomHidden;
 @end
 
 @implementation ISHPullUpViewController
@@ -383,7 +384,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 }
 
 - (void)setBottomHidden:(BOOL)bottomHidden animated:(BOOL)animated {
-    if (bottomHidden == _bottomHidden) {
+    if (!bottomHidden == !_bottomHidden) {
         return;
     }
 
@@ -399,23 +400,23 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
         [bottomVC viewWillDisappear:animated];
     }
 
-    void (^updateBlock)();
-    updateBlock = ^{
+    void (^updateBlock)() = ^{
         [self setDimmingViewHidden:[self dimmingViewShouldBeHidden] height:self.bottomHeight];
         [self updateViewLayoutBottomHeight:self.bottomHeight withSize:self.view.bounds.size];
     };
 
-    void (^completion)(BOOL);
-    completion = ^(BOOL finished) {
-        if (!finished) {
+    __weak typeof(self) weakSelf = self;
+    void (^completion)(BOOL) = ^(BOOL finished) {
+        __strong typeof(self) strongSelf = weakSelf;
+        if (!finished || !strongSelf) {
             return;
         }
 
         if (bottomHidden) {
-            [bottomVC viewDidDisappear:animated];
-            [bottomVC.view setHidden:YES];
+            [strongSelf.bottomViewController viewDidDisappear:animated];
+            [strongSelf.bottomViewController.view setHidden:YES];
         } else {
-            [bottomVC viewDidAppear:animated];
+            [strongSelf.bottomViewController viewDidAppear:animated];
         }
     };
 
@@ -470,11 +471,16 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
         return;
     }
 
+    __weak typeof(self) weakSelf = self;
     [[self class] springAnimationWithConfig:self.animationConfiguration
                                  animations:updateBlock
                                  completion:^(BOOL finished) {
-                                     self.isAnimatingStateChange = NO;
-                                     [self.stateDelegate pullUpViewController:self didChangeToState:[self state]];
+                                     __strong typeof(self) strongSelf = weakSelf;
+                                     if (!strongSelf) {
+                                         return;
+                                     }
+                                     strongSelf.isAnimatingStateChange = NO;
+                                     [strongSelf.stateDelegate pullUpViewController:strongSelf didChangeToState:[strongSelf state]];
                                  }];
 }
 
@@ -532,7 +538,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     }
 
     if (self.bottomHidden) {
-        // hide the bottom view by moving the view below outside the view and add the bottomHiddenMargin
+        // hide the bottom view by moving the view below the view and add the bottomHiddenMargin
         bottomFrame = CGRectOffset(bottomFrame, 0, size.height - bottomFrame.origin.y + self.bottomHiddenMargin);
     }
 
