@@ -190,6 +190,20 @@ typedef struct ISHPullUpAnimationConfiguration ISHPullUpAnimationConfiguration;
 /// The layout mode to be used for the bottom view controller. Default is ISHPullUpBottomLayoutModeShift.
 @property (nonatomic) ISHPullUpBottomLayoutMode bottomLayoutMode;
 
+/// YES if bottom is hidden outside of view
+@property (nonatomic, readonly) BOOL bottomHidden;
+
+/// Hide or unhide the bottom view controller.
+- (void)setBottomHidden:(BOOL)bottomHidden animated:(BOOL)animated;
+
+/**
+ *  When hiding the bottom view this additional margin is added to allow 
+ *  shadows and other elements that extend beyond the bottom view controller's
+ *  view to be completely hidden.
+ *  Default is 10.0.
+ */
+@property (nonatomic) BOOL bottomHiddenMargin;
+
 /// The contentDelegate should be used to adjust the contentViewController's
 /// layout for the area overlayed by the bottomViewController.
 @property (nonatomic, nullable, weak) id<ISHPullUpContentDelegate> contentDelegate;
