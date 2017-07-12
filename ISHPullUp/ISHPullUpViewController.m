@@ -379,10 +379,6 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     self.maximumBottomHeightCached = [self maximumBottomHeightWithSize:size];
 }
 
-- (void)setBottomHidden:(BOOL)bottomHidden {
-    [self setBottomHidden:bottomHidden animated:NO];
-}
-
 - (void)setBottomHidden:(BOOL)bottomHidden animated:(BOOL)animated {
     if (!bottomHidden == !_bottomHidden) {
         return;
@@ -405,9 +401,9 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
         [self updateViewLayoutBottomHeight:self.bottomHeight withSize:self.view.bounds.size];
     };
 
-    __weak typeof(self) weakSelf = self;
+    __weak ISHPullUpViewController *weakSelf = self;
     void (^completion)(BOOL) = ^(BOOL finished) {
-        __strong typeof(self) strongSelf = weakSelf;
+        ISHPullUpViewController *strongSelf = weakSelf;
         if (!finished || !strongSelf) {
             return;
         }
@@ -471,11 +467,11 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
         return;
     }
 
-    __weak typeof(self) weakSelf = self;
+    __weak ISHPullUpViewController *weakSelf = self;
     [[self class] springAnimationWithConfig:self.animationConfiguration
                                  animations:updateBlock
                                  completion:^(BOOL finished) {
-                                     __strong typeof(self) strongSelf = weakSelf;
+                                     ISHPullUpViewController *strongSelf = weakSelf;
                                      if (!strongSelf) {
                                          return;
                                      }
