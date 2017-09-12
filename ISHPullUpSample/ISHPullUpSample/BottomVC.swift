@@ -94,6 +94,7 @@ class BottomVC: UIViewController, ISHPullUpSizingDelegate, ISHPullUpStateDelegat
     func pullUpViewController(_ pullUpViewController: ISHPullUpViewController, didChangeTo state: ISHPullUpState) {
         topLabel.text = textForState(state);
         handleView.setState(ISHPullUpHandleView.handleState(for: state), animated: firstAppearanceCompleted)
+        scrollView.alpha = (state == .collapsed) ? 0 : 1;
     }
 
     private func textForState(_ state: ISHPullUpState) -> String {
