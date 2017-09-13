@@ -549,8 +549,20 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 
     // inform content delegate that edge insets were updated
     if (self.contentViewController) {
+        /* Avoid duplicating the bottom safe area
+         * it is automatically added by the system to the contentVC.
+         * The contentDelegate should only use the provided edge inset
+         * as an additionalSafeAreaInset.
+         */
+        CGFloat bottomInset = clampedBottomHeight;
+        if (@available(iOS 11.0, *)) {
+            bottomInset -= self.view.safeAreaInsets.bottom;
+        } else {
+            bottomInset -= self.bottomLayoutGuide.length;
+        }
+
         [self.contentDelegate pullUpViewController:self
-                                  updateEdgeInsets:UIEdgeInsetsMake(0, 0, clampedBottomHeight, 0)
+                                  updateEdgeInsets:UIEdgeInsetsMake(0, 0, bottomInset, 0)
                           forContentViewController:self.contentViewController];
     }
     
