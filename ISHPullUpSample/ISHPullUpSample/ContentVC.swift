@@ -21,9 +21,15 @@ class ContentVC: UIViewController, ISHPullUpContentDelegate {
         super.viewDidLoad()
         layoutAnnotationLabel.layer.cornerRadius = 2;
         
-        // the mapView should use the rootView's layout margins
-        // to correctly update the legal label and coordinate region
-        mapView.preservesSuperviewLayoutMargins = true
+        // The mapView should preserve the rootView's layout margins only
+        // on iOS 10 and earlier to correctly update the legal label
+        // and coordinate region.
+        // On iOS 11 and later this is done automatically via the safeAreaInsets.
+        if #available(iOS 11.0, *) {
+            mapView.preservesSuperviewLayoutMargins = false
+        } else {
+            mapView.preservesSuperviewLayoutMargins = true
+        }
     }
 
     // MARK: ISHPullUpContentDelegate
