@@ -353,11 +353,18 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
         return 0;
     }
 
-    if (!self.sizingDelegate) {
-        return ISHPullUpViewControllerDefaultMinimumHeight;
+    CGFloat additionalHeight;
+    if (@available(iOS 11.0, *)) {
+        additionalHeight = self.view.safeAreaInsets.bottom;
+    } else {
+        additionalHeight = self.bottomLayoutGuide.length;
     }
 
-    return [self.sizingDelegate pullUpViewController:self minimumHeightForBottomViewController:self.bottomViewController];
+    if (!self.sizingDelegate) {
+        return ISHPullUpViewControllerDefaultMinimumHeight + additionalHeight;
+    }
+
+    return [self.sizingDelegate pullUpViewController:self minimumHeightForBottomViewController:self.bottomViewController] + additionalHeight;
 }
 
 - (CGFloat)maximumAvailableHeightWithSize:(CGSize)size {
@@ -518,7 +525,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
              */
             CGFloat maxHeight = self.maximumBottomHeightCached;
             CGFloat expandedBottomHeight = MAX(maxHeight, clampedBottomHeight);
-            CGFloat yPosition = CGRectGetMaxY(bounds) - clampedBottomHeight - self.bottomLayoutGuide.length;
+            CGFloat yPosition = CGRectGetMaxY(bounds) - clampedBottomHeight;
 
             bottomFrame = CGRectMake(0, yPosition, CGRectGetWidth(bounds), expandedBottomHeight);
             break;
@@ -526,7 +533,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 
         case ISHPullUpBottomLayoutModeResize: {
             clampedBottomHeight = bottomHeight;
-            CGFloat yPosition = CGRectGetMaxY(bounds) - clampedBottomHeight - self.bottomLayoutGuide.length;
+            CGFloat yPosition = CGRectGetMaxY(bounds) - clampedBottomHeight;
 
             bottomFrame = CGRectMake(0, yPosition, CGRectGetWidth(bounds), clampedBottomHeight);
             break;
@@ -542,8 +549,20 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 
     // inform content delegate that edge insets were updated
     if (self.contentViewController) {
+        /* Avoid duplicating the bottom safe area
+         * it is automatically added by the system to the contentVC.
+         * The contentDelegate should only use the provided edge inset
+         * as an additionalSafeAreaInset.
+         */
+        CGFloat bottomInset = clampedBottomHeight;
+        if (@available(iOS 11.0, *)) {
+            bottomInset -= self.view.safeAreaInsets.bottom;
+        } else {
+            bottomInset -= self.bottomLayoutGuide.length;
+        }
+
         [self.contentDelegate pullUpViewController:self
-                                  updateEdgeInsets:UIEdgeInsetsMake(0, 0, clampedBottomHeight, 0)
+                                  updateEdgeInsets:UIEdgeInsetsMake(0, 0, bottomInset, 0)
                           forContentViewController:self.contentViewController];
     }
     
