@@ -205,7 +205,7 @@ typedef struct ISHPullUpAnimationConfiguration ISHPullUpAnimationConfiguration;
  *  view to be completely hidden.
  *  Default is 10.0.
  */
-@property (nonatomic) BOOL bottomHiddenMargin;
+@property (nonatomic) CGFloat bottomHiddenMargin;
 
 /// The contentDelegate should be used to adjust the contentViewController's
 /// layout for the area overlayed by the bottomViewController.
