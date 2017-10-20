@@ -494,7 +494,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 
     CGFloat maximumHeightOverMinimum = self.maximumBottomHeightCached - self.minimumBottomHeightCached;
 
-    if (!maximumHeightOverMinimum) {
+    if (maximumHeightOverMinimum <= 0) {
         // if the view cannot be extended beyond minimum always hide dimming view
         return YES;
     }
