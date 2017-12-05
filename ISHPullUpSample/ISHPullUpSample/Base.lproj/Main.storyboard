@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,6 +27,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="42" y="123"/>
         </scene>
         <!--ContentVC-->
         <scene sceneID="wwm-CO-3Yz">
@@ -38,15 +42,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RUQ-Ev-jlM" userLabel="layoutMarginView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AS9-xW-rRR"/>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AS9-xW-rRR">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </mapView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" bottom margin 5 pt below line " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZi-Jt-JnY">
+                                        <rect key="frame" x="100" y="581.5" width="175.5" height="14.5"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SVp-Fm-6py" userLabel="Ruler">
+                                        <rect key="frame" x="0.0" y="601" width="375" height="1"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="ddn-uk-DdS"/>
@@ -100,10 +109,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2N-ib-x8k" userLabel="rootView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="458.5"/>
                                 <subviews>
                                     <view opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="wYd-re-vzQ" userLabel="Topview">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="58.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="PullUp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yx8-ty-Dxg">
+                                                <rect key="frame" x="162.5" y="19" width="50" height="20.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="topViewLabel">
                                                     <accessibilityTraits key="traits" button="YES" staticText="YES"/>
                                                 </accessibility>
@@ -112,6 +124,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="tsS-4c-9dW" customClass="ISHPullUpHandleView">
+                                                <rect key="frame" x="169.5" y="6" width="36" height="11"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
@@ -120,11 +133,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MW6-ew-SO5" userLabel="Button Info">
+                                                <rect key="frame" x="333" y="18.5" width="22" height="22"/>
                                                 <connections>
                                                     <segue destination="hVq-aV-vzS" kind="presentation" id="kVj-P1-OHi"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzr-f6-VUt" userLabel="Button Lock">
+                                                <rect key="frame" x="20" y="14.5" width="33" height="30"/>
                                                 <state key="normal" title="Lock"/>
                                                 <connections>
                                                     <action selector="buttonTappedLock:" destination="DPR-aC-2Fs" eventType="touchUpInside" id="Ydg-2P-faK"/>
@@ -134,8 +149,8 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <accessibility key="accessibilityConfiguration" identifier="topViewHandle"/>
                                         <constraints>
-                                            <constraint firstItem="Yx8-ty-Dxg" firstAttribute="leading" secondItem="wYd-re-vzQ" secondAttribute="leading" constant="10" id="1Pj-BQ-Rfm"/>
                                             <constraint firstItem="nzr-f6-VUt" firstAttribute="centerY" secondItem="Yx8-ty-Dxg" secondAttribute="centerY" id="DW0-3d-hy3"/>
+                                            <constraint firstItem="Yx8-ty-Dxg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nzr-f6-VUt" secondAttribute="trailing" constant="5" id="HkA-j6-7TJ"/>
                                             <constraint firstItem="MW6-ew-SO5" firstAttribute="centerY" secondItem="Yx8-ty-Dxg" secondAttribute="centerY" id="LWh-yX-dS8"/>
                                             <constraint firstItem="tsS-4c-9dW" firstAttribute="centerX" secondItem="wYd-re-vzQ" secondAttribute="centerX" id="Q5Z-PV-IUd"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Yx8-ty-Dxg" secondAttribute="bottom" constant="5" id="Xa4-ZS-gho"/>
@@ -148,8 +163,10 @@
                                         </constraints>
                                     </view>
                                     <scrollView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Meo-oE-g32">
+                                        <rect key="frame" x="0.0" y="58.5" width="375" height="400"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTl-sM-aAD">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTl-sM-aAD">
+                                                <rect key="frame" x="10" y="10" width="355" height="359.5"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="scrollViewContent"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
@@ -208,6 +225,7 @@ Two view subclasses are provided to make beautiful iOS10 style designs easier. <
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFt-g1-SmC">
+                                                <rect key="frame" x="10" y="379.5" width="355" height="30"/>
                                                 <state key="normal" title="Learn more"/>
                                                 <connections>
                                                     <action selector="buttonTappedLearnMore:" destination="DPR-aC-2Fs" eventType="touchUpInside" id="m5Z-ga-JVC"/>
@@ -218,7 +236,7 @@ Two view subclasses are provided to make beautiful iOS10 style designs easier. <
                                         <constraints>
                                             <constraint firstItem="VTl-sM-aAD" firstAttribute="centerX" secondItem="Meo-oE-g32" secondAttribute="centerX" id="7R6-fn-Btf"/>
                                             <constraint firstItem="VTl-sM-aAD" firstAttribute="top" secondItem="Meo-oE-g32" secondAttribute="top" constant="10" id="DCG-YV-eJW"/>
-                                            <constraint firstAttribute="trailing" secondItem="VTl-sM-aAD" secondAttribute="trailing" constant="10" id="Eyc-3u-c76"/>
+                                            <constraint firstAttribute="trailing" secondItem="VTl-sM-aAD" secondAttribute="trailing" priority="250" constant="10" id="Eyc-3u-c76"/>
                                             <constraint firstItem="JFt-g1-SmC" firstAttribute="centerX" secondItem="VTl-sM-aAD" secondAttribute="centerX" id="LB8-d5-JPx"/>
                                             <constraint firstAttribute="bottom" secondItem="JFt-g1-SmC" secondAttribute="bottom" constant="10" id="QRE-TW-PTu"/>
                                             <constraint firstItem="VTl-sM-aAD" firstAttribute="leading" secondItem="Meo-oE-g32" secondAttribute="leading" constant="10" id="S7F-I3-bpf"/>
@@ -241,8 +259,10 @@ Two view subclasses are provided to make beautiful iOS10 style designs easier. <
                                 </constraints>
                             </view>
                             <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="58R-M6-J07" userLabel="Overpull">
+                                <rect key="frame" x="0.0" y="458.5" width="375" height="41.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can stop dragging now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCf-qx-WKM">
+                                        <rect key="frame" x="105.5" y="13" width="164.5" height="16"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -262,7 +282,7 @@ Two view subclasses are provided to make beautiful iOS10 style designs easier. <
                             <constraint firstAttribute="top" secondItem="Y2N-ib-x8k" secondAttribute="top" id="09H-gf-ZLz"/>
                             <constraint firstItem="58R-M6-J07" firstAttribute="top" secondItem="Y2N-ib-x8k" secondAttribute="bottom" id="3Gp-IL-pUJ"/>
                             <constraint firstItem="58R-M6-J07" firstAttribute="leading" secondItem="uBy-SR-2QD" secondAttribute="leading" id="LJp-aI-B9D"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="58R-M6-J07" secondAttribute="bottom" id="PAr-NX-wDr"/>
+                            <constraint firstAttribute="bottom" secondItem="58R-M6-J07" secondAttribute="bottom" id="PAr-NX-wDr"/>
                             <constraint firstItem="Y2N-ib-x8k" firstAttribute="leading" secondItem="uBy-SR-2QD" secondAttribute="leading" id="vwD-EC-scj"/>
                             <constraint firstAttribute="trailing" secondItem="Y2N-ib-x8k" secondAttribute="trailing" id="wyS-N6-NcP"/>
                             <constraint firstAttribute="trailing" secondItem="58R-M6-J07" secondAttribute="trailing" id="zCF-fD-NEM"/>
@@ -294,7 +314,7 @@ Two view subclasses are provided to make beautiful iOS10 style designs easier. <
             <objects>
                 <navigationController id="hVq-aV-vzS" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DVE-p8-LX7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -318,6 +338,7 @@ Two view subclasses are provided to make beautiful iOS10 style designs easier. <
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZe-yY-poI">
+                                <rect key="frame" x="164" y="323.5" width="47.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
