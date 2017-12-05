@@ -1,5 +1,13 @@
 # <img src="icon.png" align="center" width="60" height="60"> Changelog
 
+## 1.0.6
+
+* Add support and documentation for iOS 11 insets
+* Add support for iPhone X
+* Add option to hide bottom view controller
+* Fix type of `bottomHiddenMargin` to allow custom margins
+* Require Xcode 9
+
 ## 1.0.5
 
 * Support view controller containment: `ISHPullUpViewController` (or subclasses thereof) can now be embedded in container view controllers that make use of the bottom layout guide (e.g., `UITabBarController`)
