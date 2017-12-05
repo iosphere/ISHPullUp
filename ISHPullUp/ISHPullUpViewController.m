@@ -403,7 +403,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
         [bottomVC viewWillDisappear:animated];
     }
 
-    void (^updateBlock)() = ^{
+    void (^updateBlock)(void) = ^{
         [self setDimmingViewHidden:[self dimmingViewShouldBeHidden] height:self.bottomHeight];
         [self updateViewLayoutBottomHeight:self.bottomHeight withSize:self.view.bounds.size];
     };
@@ -454,7 +454,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     self.bottomHeight = bottomHeight;
     BOOL dimmingViewHidden = [self dimmingViewShouldBeHidden];
 
-    void (^updateBlock)();
+    void (^updateBlock)(void);
     updateBlock = ^{
         self.isAnimatingStateChange = animated;
 
