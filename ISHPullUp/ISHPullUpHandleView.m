@@ -136,4 +136,18 @@
     return bezierPath;
 }
 
++ (ISHPullUpHandleState)handleStateForPullUpState:(ISHPullUpState)state {
+    switch (state) {
+        case ISHPullUpStateDragging:
+        case ISHPullUpStateIntermediate:
+            return ISHPullUpHandleStateNeutral;
+
+        case ISHPullUpStateExpanded:
+            return ISHPullUpHandleStateDown;
+
+        case ISHPullUpStateCollapsed:
+            return ISHPullUpHandleStateUp;
+    }
+}
+
 @end
