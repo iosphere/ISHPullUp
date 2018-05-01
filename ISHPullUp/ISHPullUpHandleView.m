@@ -66,13 +66,20 @@
 
     UIBezierPath *newPath = [self pathForBounds:self.bounds state:state];
 
-    NSString *keyPath = @"path";
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:keyPath];
-    animation.fromValue = (id)self.shapeLayer.path;
-    self.shapeLayer.path = [newPath CGPath];
-    animation.toValue = (id)self.shapeLayer.path;
-    animation.duration = animated ? 0.35 : 0.0;
-    [self.shapeLayer addAnimation:animation forKey:keyPath];
+    if (!animated)
+    {
+        self.shapeLayer.path = [newPath CGPath];
+    }
+    else
+    {
+        NSString *keyPath = @"path";
+        CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:keyPath];
+        animation.fromValue = (id)self.shapeLayer.path;
+        self.shapeLayer.path = [newPath CGPath];
+        animation.toValue = (id)self.shapeLayer.path;
+        animation.duration = animated ? 0.35 : 0.0;
+        [self.shapeLayer addAnimation:animation forKey:keyPath];
+    }
 }
 
 - (CGSize)intrinsicContentSize {
@@ -127,20 +134,6 @@
     [bezierPath addLineToPoint:center];
     [bezierPath addLineToPoint:centerRight];
     return bezierPath;
-}
-
-+ (ISHPullUpHandleState)handleStateForPullUpState:(ISHPullUpState)state {
-    switch (state) {
-        case ISHPullUpStateDragging:
-        case ISHPullUpStateIntermediate:
-            return ISHPullUpHandleStateNeutral;
-
-        case ISHPullUpStateExpanded:
-            return ISHPullUpHandleStateDown;
-
-        case ISHPullUpStateCollapsed:
-            return ISHPullUpHandleStateUp;
-    }
 }
 
 @end
