@@ -222,6 +222,13 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     return NO;
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRequireFailureOfGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    NSAssert(gestureRecognizer == self.panGesture, @"Unexpected gesture recognizer: %@", gestureRecognizer);
+    
+    // Prefer all other gestures over pan gesture
+    return YES;
+}
+
 #pragma mark Content and PullUp VC
 
 - (void)setContentViewController:(UIViewController *)contentViewController {
