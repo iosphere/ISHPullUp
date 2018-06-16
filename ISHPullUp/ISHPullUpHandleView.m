@@ -65,6 +65,10 @@
     _state = state;
 
     UIBezierPath *newPath = [self pathForBounds:self.bounds state:state];
+    if(!animated) {
+        self.shapeLayer.path = [newPath CGPath];
+        return;
+    }
 
     NSString *keyPath = @"path";
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:keyPath];
