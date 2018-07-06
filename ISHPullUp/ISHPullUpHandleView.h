@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ISHPullUpViewController.h"
 
 /**
  *   Enum describing the state of a ISHPullUpHandleView.
  *
  *   Use handleStateForPullUpState: to get the appropriate
  *   handle state for the corresponding pull up state.
+ *   See ISHPullUpHandleView+ISHPullUpState.h
  */
 typedef NS_ENUM(NSUInteger, ISHPullUpHandleState) {
     /// Arrow points upwards
@@ -45,9 +45,4 @@ IB_DESIGNABLE
  */
 - (void)setState:(ISHPullUpHandleState)state animated:(BOOL)animated;
 
-/// Helper method to convert ISHPullUpState to ISHPullUpHandleState.
-/// @param state An ISHPullUpViewController's state.
-/// @return An ISHPullUpHandleView's state, appropriate for the given
-/// pull up controller state.
-+ (ISHPullUpHandleState)handleStateForPullUpState:(ISHPullUpState)state;
 @end

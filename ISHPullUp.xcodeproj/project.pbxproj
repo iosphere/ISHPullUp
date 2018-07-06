@@ -12,6 +12,8 @@
 		DC2C2CE71D2405BD00CB2528 /* ISHPullUpHandleView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2C2CE51D2405BD00CB2528 /* ISHPullUpHandleView.m */; };
 		DC3E98711D2329A800468DF0 /* ISHPullUpRoundedView.h in Headers */ = {isa = PBXBuildFile; fileRef = DC3E986F1D2329A800468DF0 /* ISHPullUpRoundedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC3E98721D2329A800468DF0 /* ISHPullUpRoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3E98701D2329A800468DF0 /* ISHPullUpRoundedView.m */; };
+		DCBD800D20F01750007E44A1 /* ISHPullUpHandleView+ISHPullUpState.h in Headers */ = {isa = PBXBuildFile; fileRef = DCBD800B20F01750007E44A1 /* ISHPullUpHandleView+ISHPullUpState.h */; };
+		DCBD800E20F01750007E44A1 /* ISHPullUpHandleView+ISHPullUpState.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBD800C20F01750007E44A1 /* ISHPullUpHandleView+ISHPullUpState.m */; };
 		DCEC1A181D1EEB750080B69A /* ISHPullUpViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DCEC1A161D1EEB750080B69A /* ISHPullUpViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DCEC1A191D1EEB750080B69A /* ISHPullUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEC1A171D1EEB750080B69A /* ISHPullUpViewController.m */; };
 /* End PBXBuildFile section */
@@ -23,6 +25,8 @@
 		DC2C2CE51D2405BD00CB2528 /* ISHPullUpHandleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISHPullUpHandleView.m; sourceTree = "<group>"; };
 		DC3E986F1D2329A800468DF0 /* ISHPullUpRoundedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISHPullUpRoundedView.h; sourceTree = "<group>"; };
 		DC3E98701D2329A800468DF0 /* ISHPullUpRoundedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISHPullUpRoundedView.m; sourceTree = "<group>"; };
+		DCBD800B20F01750007E44A1 /* ISHPullUpHandleView+ISHPullUpState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ISHPullUpHandleView+ISHPullUpState.h"; sourceTree = "<group>"; };
+		DCBD800C20F01750007E44A1 /* ISHPullUpHandleView+ISHPullUpState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ISHPullUpHandleView+ISHPullUpState.m"; sourceTree = "<group>"; };
 		DCEC19D81D1EEB0D0080B69A /* ISHPullUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ISHPullUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCEC1A161D1EEB750080B69A /* ISHPullUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISHPullUpViewController.h; sourceTree = "<group>"; };
 		DCEC1A171D1EEB750080B69A /* ISHPullUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISHPullUpViewController.m; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 				DC2C2CE51D2405BD00CB2528 /* ISHPullUpHandleView.m */,
 				DC3E986F1D2329A800468DF0 /* ISHPullUpRoundedView.h */,
 				DC3E98701D2329A800468DF0 /* ISHPullUpRoundedView.m */,
+				DCBD800B20F01750007E44A1 /* ISHPullUpHandleView+ISHPullUpState.h */,
+				DCBD800C20F01750007E44A1 /* ISHPullUpHandleView+ISHPullUpState.m */,
 			);
 			path = ISHPullUp;
 			sourceTree = "<group>";
@@ -87,6 +93,7 @@
 			files = (
 				DCEC1A181D1EEB750080B69A /* ISHPullUpViewController.h in Headers */,
 				DC2C2CE61D2405BD00CB2528 /* ISHPullUpHandleView.h in Headers */,
+				DCBD800D20F01750007E44A1 /* ISHPullUpHandleView+ISHPullUpState.h in Headers */,
 				DC3E98711D2329A800468DF0 /* ISHPullUpRoundedView.h in Headers */,
 				1BDAF3011D368CB40061CAF9 /* ISHPullUp.h in Headers */,
 			);
@@ -162,6 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCBD800E20F01750007E44A1 /* ISHPullUpHandleView+ISHPullUpState.m in Sources */,
 				DCEC1A191D1EEB750080B69A /* ISHPullUpViewController.m in Sources */,
 				DC2C2CE71D2405BD00CB2528 /* ISHPullUpHandleView.m in Sources */,
 				DC3E98721D2329A800468DF0 /* ISHPullUpRoundedView.m in Sources */,
