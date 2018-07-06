@@ -12,7 +12,7 @@
 		DC2C2CE71D2405BD00CB2528 /* ISHPullUpHandleView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2C2CE51D2405BD00CB2528 /* ISHPullUpHandleView.m */; };
 		DC3E98711D2329A800468DF0 /* ISHPullUpRoundedView.h in Headers */ = {isa = PBXBuildFile; fileRef = DC3E986F1D2329A800468DF0 /* ISHPullUpRoundedView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC3E98721D2329A800468DF0 /* ISHPullUpRoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3E98701D2329A800468DF0 /* ISHPullUpRoundedView.m */; };
-		DCBD800D20F01750007E44A1 /* ISHPullUpHandleView+ISHPullUpState.h in Headers */ = {isa = PBXBuildFile; fileRef = DCBD800B20F01750007E44A1 /* ISHPullUpHandleView+ISHPullUpState.h */; };
+		DCBD800D20F01750007E44A1 /* ISHPullUpHandleView+ISHPullUpState.h in Headers */ = {isa = PBXBuildFile; fileRef = DCBD800B20F01750007E44A1 /* ISHPullUpHandleView+ISHPullUpState.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DCBD800E20F01750007E44A1 /* ISHPullUpHandleView+ISHPullUpState.m in Sources */ = {isa = PBXBuildFile; fileRef = DCBD800C20F01750007E44A1 /* ISHPullUpHandleView+ISHPullUpState.m */; };
 		DCEC1A181D1EEB750080B69A /* ISHPullUpViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DCEC1A161D1EEB750080B69A /* ISHPullUpViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DCEC1A191D1EEB750080B69A /* ISHPullUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCEC1A171D1EEB750080B69A /* ISHPullUpViewController.m */; };

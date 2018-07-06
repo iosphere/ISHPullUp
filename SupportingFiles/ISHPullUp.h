@@ -11,3 +11,4 @@
 #import "ISHPullUpViewController.h"
 #import "ISHPullUpHandleView.h"
 #import "ISHPullUpRoundedView.h"
+#import "ISHPullUpHandleView+ISHPullUpState.h"
