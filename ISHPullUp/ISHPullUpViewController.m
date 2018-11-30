@@ -375,7 +375,13 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 }
 
 - (CGFloat)maximumAvailableHeightWithSize:(CGSize)size {
-    return size.height - self.topLayoutGuide.length - self.topMargin;
+    CGFloat topInset;
+    if (@available(iOS 11.0, *)) {
+        topInset = self.view.safeAreaInsets.top;
+    } else {
+        topInset = self.topLayoutGuide.length;
+    }
+    return size.height - topInset - self.topMargin;
 }
 
 - (CGFloat)maximumBottomHeightWithSize:(CGSize)size  {
