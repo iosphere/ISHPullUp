@@ -361,11 +361,15 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     }
 
     CGFloat additionalHeight;
+#if  __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_11_0
+    additionalHeight = self.view.safeAreaInsets.bottom;
+#else
     if (@available(iOS 11.0, *)) {
         additionalHeight = self.view.safeAreaInsets.bottom;
     } else {
         additionalHeight = self.bottomLayoutGuide.length;
     }
+#endif
 
     if (!self.sizingDelegate) {
         return ISHPullUpViewControllerDefaultMinimumHeight + additionalHeight;
@@ -375,7 +379,11 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 }
 
 - (CGFloat)maximumAvailableHeightWithSize:(CGSize)size {
+#if  __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_11_0
+    return size.height - self.view.safeAreaInsets.top - self.topMargin;
+#else
     return size.height - self.topLayoutGuide.length - self.topMargin;
+#endif
 }
 
 - (CGFloat)maximumBottomHeightWithSize:(CGSize)size  {
@@ -562,11 +570,15 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
          * as an additionalSafeAreaInset.
          */
         CGFloat bottomInset = clampedBottomHeight;
+#if  __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_11_0
+        bottomInset -= self.view.safeAreaInsets.bottom;
+#else
         if (@available(iOS 11.0, *)) {
             bottomInset -= self.view.safeAreaInsets.bottom;
         } else {
             bottomInset -= self.bottomLayoutGuide.length;
         }
+#endif
 
         [self.contentDelegate pullUpViewController:self
                                   updateEdgeInsets:UIEdgeInsetsMake(0, 0, bottomInset, 0)
