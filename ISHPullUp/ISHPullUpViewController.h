@@ -229,6 +229,9 @@ typedef struct ISHPullUpAnimationConfiguration ISHPullUpAnimationConfiguration;
  */
 @property (nonatomic) CGFloat snapThreshold;
 
+/// If YES the pan gesture recognizer will require another gesture recognizers to fail. Default is YES.
+@property (nonatomic) BOOL requireOtherGestureRecognizersToFail;
+
 /// The current state of the view controller.
 @property (nonatomic, readonly) ISHPullUpState state;
 
