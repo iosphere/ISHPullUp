@@ -57,6 +57,7 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
     _bottomLayoutMode = ISHPullUpBottomLayoutModeShift;
     self.bottomHeight = ISHPullUpViewControllerDefaultMinimumHeight;
     self.snapToEnds = YES;
+    self.requireOtherGestureRecognizersToFail = YES;
     self.snapThreshold = ISHPullUpViewControllerDefaultSnapThreshold;
     self.topMargin = ISHPullUpViewControllerDefaultTopMargin;
     self.dimmingColor = [UIColor colorWithWhite:0 alpha:0.4];
@@ -224,9 +225,8 @@ const CGFloat ISHPullUpViewControllerDefaultTopMargin = 20.0;
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRequireFailureOfGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     NSAssert(gestureRecognizer == self.panGesture, @"Unexpected gesture recognizer: %@", gestureRecognizer);
-    
-    // Prefer all other gestures over pan gesture
-    return YES;
+
+    return self.requireOtherGestureRecognizersToFail;
 }
 
 #pragma mark Content and PullUp VC
