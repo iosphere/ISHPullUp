@@ -28,7 +28,7 @@ class WebViewController: UIViewController {
         // setup webview
         let wkWebView = WKWebView()
         let labelHeight: CGFloat = 40.0;
-        let webViewFrame = UIEdgeInsetsInsetRect(view.bounds, UIEdgeInsetsMake(labelHeight, 0, 0, 0))
+        let webViewFrame = view.bounds.inset(by: UIEdgeInsets(top: labelHeight, left: 0, bottom: 0, right: 0))
         wkWebView.frame = webViewFrame
         wkWebView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(wkWebView)
