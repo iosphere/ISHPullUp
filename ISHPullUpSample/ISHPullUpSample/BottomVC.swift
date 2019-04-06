@@ -35,7 +35,8 @@ class BottomVC: UIViewController, ISHPullUpSizingDelegate, ISHPullUpStateDelegat
         firstAppearanceCompleted = true;
     }
 
-    private dynamic func handleTapGesture(gesture: UITapGestureRecognizer) {
+    @objc
+    private func handleTapGesture(gesture: UITapGestureRecognizer) {
         if pullUpController.isLocked {
             return
         }
@@ -60,7 +61,7 @@ class BottomVC: UIViewController, ISHPullUpSizingDelegate, ISHPullUpStateDelegat
     // MARK: ISHPullUpSizingDelegate
 
     func pullUpViewController(_ pullUpViewController: ISHPullUpViewController, maximumHeightForBottomViewController bottomVC: UIViewController, maximumAvailableHeight: CGFloat) -> CGFloat {
-        let totalHeight = rootView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        let totalHeight = rootView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
 
         // we allow the pullUp to snap to the half way point
         // we "calculate" the cached value here 
@@ -70,7 +71,7 @@ class BottomVC: UIViewController, ISHPullUpSizingDelegate, ISHPullUpStateDelegat
     }
 
     func pullUpViewController(_ pullUpViewController: ISHPullUpViewController, minimumHeightForBottomViewController bottomVC: UIViewController) -> CGFloat {
-        return topView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height;
+        return topView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height;
     }
 
     func pullUpViewController(_ pullUpViewController: ISHPullUpViewController, targetHeightForBottomViewController bottomVC: UIViewController, fromCurrentHeight height: CGFloat) -> CGFloat {
@@ -112,6 +113,8 @@ class BottomVC: UIViewController, ISHPullUpSizingDelegate, ISHPullUpStateDelegat
             return "Hold on"
         case .expanded:
             return "Drag down or tap"
+        @unknown default:
+            return "Unknown value"
         }
     }
 }
