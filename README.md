@@ -159,6 +159,16 @@ You can include them directly into your project:
 * `ISHPullUp/ISHPullUpRoundedView.`{`h`/`m`}
 * `ISHPullUp/ISHPullUpViewController.`{`h`/`m`}
 
+### Swift Package Manager
+
+__NOTE__: _These instructions are intended for usage on Xcode 11 and higher. Xcode 11 is the first version of Xcode that integrates Swift Package manager and makes it way easier to use than it was at the command line. If you are using older versions of Xcode, we recommend using CocoaPods._
+
+1. Go to File > Swift Packages > Add Package Dependency... (If you have multiple projects, select the project you want to add the library to)
+2. Paste the URL to the [this repo](https://github.com/iosphere/ISHPullUp) into the search bar, then hit the Next button:
+3. Select what version you want to use, then hit next (Xcode will automatically suggest the current version Up to Next Major).
+4. Select the `ISHPullUp` library and then hit finish.
+5. You're done!
+
 ### CocoaPods
 
 You can use CocoaPods to install ISHPullUp as a static library. Add this
